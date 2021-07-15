@@ -1,0 +1,83 @@
+@font-face {
+    font-family: GoogleSans-Medium;
+    src: url('../font/GoogleSans-Medium.otf') ;
+}
+@font-face {
+    font-family: GoogleSans-Bold;
+    src: url('../font/GoogleSans-Bold.otf') ;
+}
+@font-face {
+    font-family: GoogleSans-Regular;
+    src: url('../font/GoogleSans-Regular.otf') ;
+}
+
+/* Menu left */
+.main{
+    display: flex;
+}
+.menu-left{
+    display: block;
+    position: relative;
+    border-right: 1px solid #bbbbbb;
+    width: 200px;
+    padding: 0;
+    font-family: GoogleSans-Medium;
+}
+.menu-left__logo{
+    display: flex;
+    height: 48px;
+    line-height: 48px;
+}
+.icon-box .icon-toggle{
+    height: 24px;
+    padding: 0 10px 0 16px;
+}
+.logo-box .logo{
+    height: 24px;
+}
+.menu-left__content{
+    display: block;
+    list-style: none;
+    padding: 0;
+}
+.menu-left__item{
+    display: flex;
+    height: 44px;
+    align-items: center;
+}
+.menu-left__item:hover{
+    background-color: #e5e5e5;
+    color: #000000;
+    font-family: GoogleSans-Regular;
+}
+.menu-left__item-focus{
+    background-color:  #019160;
+}
+.menu-left__list-icon{
+    width: 52px;
+    text-align: center;
+}
+.menu-left__icon{
+    width: 20px;
+}
+.menu-left__name{
+    text-decoration: none;
+    font-size: 13px;
+    color:#454545;
+    width: 100%;
+    height: 100%;
+    line-height: 44px;
+    padding-top: 1.5px;
+}
+.menu-left__name:hover{
+    text-decoration: none;
+    color:  #000000;
+}
+.menu-left__item.menu-left__item-focus .menu-left__name
+{
+    color: #ffffff;
+    font-family: GoogleSans-Medium;
+}
+.menu-left__item.menu-left__item-focus:hover{
+    background-color:  #019160;
+}

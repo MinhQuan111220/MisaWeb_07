@@ -1,0 +1,214 @@
+@font-face {
+    font-family: GoogleSans-Medium;
+    src: url('../font/GoogleSans-Medium.otf') ;
+}
+@font-face {
+    font-family: GoogleSans-Bold;
+    src: url('../font/GoogleSans-Bold.otf') ;
+}
+@font-face {
+    font-family: GoogleSans-Regular;
+    src: url('../font/GoogleSans-Regular.otf') ;
+}
+body{
+    font-family: GoogleSans-Regular;
+    font-size: 13px;
+    box-sizing: border-box;
+}
+.main{
+    position: relative;
+}
+.active{
+    display: block;
+}
+.correct{
+    color: #F65454 ;
+}
+.heading{
+    color: #000000;
+    font-size: 24px;
+    margin: 0;
+    font-family: GoogleSans-Bold;
+}
+.title{
+    color: #000000;
+    font-size: 20px;
+    margin: 0;
+    font-family: GoogleSans-Bold;
+}
+.title2{
+    color: #000000;
+    font-size: 14px;
+    font-weight: 800;
+    margin: 0;
+}
+.label-field__input{
+    color: #000000;
+    font-size: 13px;
+    font-weight: 600;
+    margin: 0;
+}
+.even{
+    background-color: #e5e5e5;
+}
+.button{
+    background-color: #019160;
+    border-radius: 4px;
+    border: 0;
+    height: 40px;
+    min-width: 100px;
+    color: #ffffff;
+    font-size: 13px;
+    font-family: GoogleSans-Regular;
+    text-align: center;
+    line-height: 40px;
+}
+.button-save{
+    background-color: #019160;
+    border-radius: 4px;
+    border: 0;
+    height: 40px;
+    width: 100px;
+    color: #ffffff;
+    font-size: 13px;
+    font-family: GoogleSans-Regular;
+    line-height: 40px;
+    margin: 0 24px 0 16px;
+    cursor: pointer;
+}
+.button-save i {
+    margin: 0 8px 0 24px;
+}
+.button-save:hover{
+    background-color: #2FBE8E;
+}
+.button-cancel{
+    background-color: #E5E5E5;;
+    border-radius: 4px;
+    border: 0;
+    height: 40px;
+    width: 100px;
+    color: #000000;
+    font-size: 13px;
+    font-family: GoogleSans-Regular;
+    text-align: center;
+    line-height: 40px;
+    cursor: pointer;
+}
+.button-cancel:hover{
+    background-color: #E9EBEE;
+}
+/* Dropdown */
+.dropdown{
+    display: flex;
+    height: 40px;
+    border: 1px solid #bbbbbb;
+    border-radius: 4px;
+    color: #000000;
+    font-weight: 500;
+    align-items: center;
+    padding-left: 16px;
+    cursor: pointer;
+    position: relative;
+    min-width: 180px;
+    justify-content: space-between;
+    z-index: 1;
+}
+.dropdown.focus{
+    border: 1px solid #01b075;
+}
+.dropdown-input{
+    width: 100%;
+    height: 100%;
+    border: 0;
+    outline: none;
+}
+.dropdown-icon{
+    padding: 0 12px;
+    cursor: pointer;
+    border-bottom-right-radius: 3px;
+    border-top-right-radius: 3px;
+    color: #454545;
+    height: 38.5px;
+    border-left: 1px solid #bbbbbb;
+    line-height: 38.5px;
+}
+.dropdown-icon:hover{
+    background-color: #E5E5E5;
+    border-left: 1px solid #E5E5E5;
+}
+.dropdown-list{
+    list-style: none;
+    position: absolute;
+    width: 100%;
+    padding: 0;
+    background-color: #ffffff;
+    left: 0;
+    top: 102%;
+    box-shadow: 0 4px 12px rgba(0,0,0, 0.4);
+    padding: 6px 0;
+    border-radius: 4px;
+    margin: 0;
+    display: none;
+    z-index: 1;
+}
+.dropdown-list.active{
+    display: block;
+}
+.dropdown-list__item{
+    height: 40px;
+    line-height: 40px;
+    display: flex;
+}
+.dropdown-list__item:hover{
+   background-color: #e5e5e5;
+}
+.dropdown-list__item span{
+    margin-left: 38px;
+}
+.dropdown-list__item i{
+    display: none;
+}
+.dropdown-list__item.dropdown-list__item-focus i{
+    line-height: 40px;
+    display: flex;
+    padding: 0 10px;
+}
+.dropdown-list__item.dropdown-list__item-focus span{
+    margin-left: 0;
+}
+.dropdown-list__item.dropdown-list__item-focus{
+    background-color: #019160;
+    color: #ffffff;
+    border: 1px solid #019160;
+}
+
+/* Input */
+.input-embrace{
+    width: 100%;
+    position: relative;
+}
+.input{
+    height: 40px;
+    width: 90%;
+    border-radius: 4px;
+    border : 1px solid #bbbbbb;
+    padding-left: 16px;
+    outline: none;
+    color: #000000;
+    font-size: 13px;
+    font-family: GoogleSans-Regular;
+}
+.input:focus{
+    border : 1px solid #019160;
+}
+.input-icon{
+    position: absolute;
+    font-size: 13px;
+    top: 12px;
+    right: 60px;
+}
+.input-vnd{
+    font-style: italic;
+}
+

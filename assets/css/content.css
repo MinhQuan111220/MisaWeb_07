@@ -1,0 +1,322 @@
+
+.content{
+    /* flex: 1; */
+    width: calc(100vw - 220px);
+    position: relative;
+}
+/* Header */
+.content__header{
+    display: flex;
+    width: 100%;
+    height: 49px;
+    align-items: center;
+    border-bottom: 1px solid #ccc;
+    justify-content: space-between;
+    position: relative;
+}
+.content__header-text{
+    display: flex;
+    height: 48px;
+    align-items: center;
+}
+.BD{
+    height: 80%;
+    width: 40px;
+    border-radius:6px;
+    background-color: #EBF4FF;
+    text-align: center;
+    margin-left: 24px;
+}
+.BD h2{
+    font-size: 14px;
+    line-height: calc((48px*80)/100);
+    color: #0075FF;
+    cursor: default;
+}
+.text-title{
+    padding-left: 10px;
+    display: flex;
+    align-items: center;
+    cursor: pointer;
+}
+.text-title i{
+    font-size: 12px;
+    padding-left: 10px;
+    
+}
+.account{
+    display: flex;
+    align-items: center;
+}
+.avatar{
+    width: 30px;
+    margin-left: 16px;
+    cursor: pointer;
+}
+.account-name{
+    padding: 0 16px;
+    cursor: pointer;
+}
+.account__notification{
+    font-size: 18px;
+    color: #454545 ;
+    font-weight: 200;
+    cursor: pointer;
+    position: relative;
+}
+.account__notification::after{
+    content: "";
+    position: absolute;
+    width: 7px;
+    height: 7px;
+    background-color: red;
+    top: 2%;
+    right: calc(16% - 3px);
+    border-radius: 3.5px;
+    border: 2px solid #ffffff;
+    display: block;
+}
+.account__option{
+    font-size: 13px;
+    padding-right: 16px;
+    margin-top: 2px;
+    cursor: pointer;
+    color: #E5E5E5;
+}
+
+
+/* Body */
+.content__body{
+    padding: 24px 12px;
+}
+.content__action-title{
+    color: #000000;
+    font-size: 20px;
+    font-weight: 700;
+    margin: 0;
+}
+.content__action{
+    display: flex;
+    justify-content: space-between;
+}
+.content__action-button{
+    display: flex;
+    border-radius: 4px;
+}
+.content__action-button-btn{
+    display: flex;
+    align-items: center;
+    padding: 0 16px;
+    background-color: #019160;
+    border-bottom-left-radius: 4px;
+    border-top-left-radius: 4px;
+    border: 1px solid #2FBE8E;
+    border-left: 0;
+    border-bottom: 0;
+    border-top: 0;
+    height: 40px;
+    min-width: 100px;
+    color: #ffffff;
+    font-size: 13px;
+    font-family: GoogleSans-Regular;
+}
+.content__action-button-btn:hover,
+.button__down:hover{
+    background-color: #2FBE8E;
+}
+.button__icon-left{
+    width: 20px;
+}
+.button__text-add{
+    font-size: 13px;
+    margin: 0;
+    padding-left: 4px;
+}
+.button__down{
+    padding : 0 12px;
+    height: 40px;
+    line-height: 40px;
+    background-color: #019160;
+    color: #ffffff;
+    border-bottom-right-radius: 4px;
+    border-top-right-radius: 4px;
+    font-size: 13px;
+    font-family: GoogleSans-Regular;
+    cursor: pointer;
+}
+.content__search{
+    display: flex;
+    justify-content: space-between;
+    padding-top: 8px;
+}
+.content__field{
+    display: flex;
+    width: 54%;
+    justify-content: space-between;
+}
+.field{
+    display: flex;
+    height: 40px;
+    width: 320px;
+    position: relative;
+}
+.field__search:focus{
+    border: 1px solid #019160;
+    background-position: 16px 11px;
+    color: #000000;
+}
+.field__icon{
+    position: absolute;
+    width: 16px;
+    height: 16px;
+    z-index: 1;
+    top: 12px;
+    left: 16px;
+}
+.field__search{
+    width: 100%;
+    border: 0;
+    padding: 0;
+    font-size: 13px;
+    height: 100%;
+    outline: none;
+    padding-left: 40px;
+    border: 1px solid #bbbbbb;
+    border-radius: 4px;
+    align-items: center;
+    color: #000000;
+}
+.content__search-refresh{
+    height: 40px;
+    border: 1px solid #bbbbbb;
+    border-radius: 4px;
+    line-height: 40px;
+    text-align: center;
+    padding:  0 12px;
+}
+/* Table */
+.content-table{
+    width: 100%;
+    height: 650px;
+    overflow: hidden;
+    overflow-y: auto;
+    overflow-x: scroll;
+    margin-top: 12px;
+}
+.content-table::-webkit-scrollbar
+{
+    width: 6px;
+    height: 6px;
+    background-color: #bbbbbb;
+}
+::-webkit-scrollbar-thumb
+{   
+    min-height: 40px;
+    background-color: #454545;
+    border-radius: 4px;
+}
+.content-table table{
+    width: 100%;
+}
+table th, td{
+    border-bottom: 1px solid #bbbbbb;
+    padding: 10px 16px;
+    text-align: left;
+    text-overflow: ellipsis;
+    max-width: 200px;
+    overflow: hidden;
+    white-space: nowrap;
+}
+.content-table__column.money{
+    text-align: right;
+}
+
+/* pagination */
+.content__pagination{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    text-align: center;
+    padding-top: 16px;
+}
+.show-number__person,
+.content__pagination-numbershowed{
+    color: #454545 ;
+    cursor: default;
+}
+.show-number__person span,
+.content__pagination-numbershowed span{
+    color: #000000;
+    font-weight: bold;
+}
+.content__pagination-button{
+    display: flex;
+    list-style: none;
+    align-items: center;
+    margin: 0;
+}
+.content__pagination-icon{
+    margin:  0 12px;
+    border-radius: 4px;
+    height: 40px;
+    width: 40px;
+    cursor: pointer;
+}
+.content__pagination-icon a{
+    line-height: 40px;
+}
+.content__pagination-icon a img{
+    padding-bottom: 4px;
+}
+.content__pagination-icon:hover{
+    background-color: #ffffff;
+    border: 1px solid #bbbbbb;
+}
+.content__pagination-numbers-item{
+    text-decoration: none;
+    color: #000000;
+    font-size: 13px;
+    line-height: 40px;
+    width: 100%;
+}
+.content__pagination-numbers-item:hover{
+    text-decoration: none;
+    color: #000000;
+}
+.content__pagination-numbers{
+    width: 40px;
+    height: 40px;
+    border: 1px solid #bbbbbb;
+    border-radius: 24px;
+    margin: 0 12px;
+    background-color: #E9EBEE;
+    cursor: pointer;
+}
+.content__pagination-numbers.content__pagination-numbers-focus{
+    background-color: #019160;
+    border: 0;
+}
+.content__pagination-numbers:hover{
+    background-color: #ffffff;
+}
+.content__pagination-numbers.content__pagination-numbers-focus:hover{
+    background-color: #2FBE8E;
+}
+
+/* dropdown */
+.dropdown-room,
+.dropdown-location,
+.dropdown-boy,
+.dropdown-staff__room,
+.dropdown-staff__location,
+.dropdown-staff__job{
+    display: none;
+}
+.dropdown-room.active,
+.dropdown-location.active,
+.dropdown-boy.active,
+.dropdown-staff__room.active,
+.dropdown-staff__location.active,
+.dropdown-staff__job.active{
+    display: block;
+}

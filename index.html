@@ -1,0 +1,439 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    <link rel="stylesheet" href="./assets/font/fontawesome-5.15.1/css/all.css">
+    <link rel="stylesheet" href="./assets/css/staff_information.css">
+    <link rel="stylesheet" href="./assets/css/menu.css">
+    <link rel="stylesheet" href="./assets/css/content.css">
+    <link rel="stylesheet" href="./assets/css/base.css">
+</head>
+
+<body>
+    <div class="main">
+
+        <!-- Menu -->
+        <div class="menu-left ">
+            <!-- Menu left -->
+            <div class="menu-left__logo">
+                <div class="icon-box">
+                    <img class="icon-toggle" src="./assets/img/toggle.png" alt="" class="icon-toggle">
+                </div>
+                <div class="logo-box">
+                    <img class="logo" src="./assets/img/cukcuk-logo.png" alt="">
+                </div>
+            </div>
+            <!-- Menu Left Content -->
+            <ul class="menu-left__content">
+                <li class="menu-left__item ">
+                    <div class="menu-left__list-icon">
+                        <img src="./assets/icon/dashboard.png" alt="" class="menu-left__icon">
+                    </div>
+                    <a href="" class="menu-left__name">Tổng quan</a>
+                    
+                </li>
+                <li class="menu-left__item ">
+                    <div class="menu-left__list-icon">
+                        <img src="./assets/icon/report.png" alt="" class="menu-left__icon">
+                    </div>
+                    <a href="" class="menu-left__name">Báo cáo</a>
+                    
+                </li>
+                <li class="menu-left__item ">
+                    <div class="menu-left__list-icon">
+                        <img src="./assets/icon/dashboard.png" alt="" class="menu-left__icon">
+                    </div>
+                    <a href="" class="menu-left__name"> Mua hàng</a>
+                   
+                </li>
+                <li class="menu-left__item menu-left__item-focus">
+                    <div class="menu-left__list-icon">
+                        <img src="./assets/icon/dic-employee.png" alt="" class="menu-left__icon">
+                    </div>
+                    <a href="" class="menu-left__name"> Danh mục nhân viên</a>
+                   
+                </li>
+                <li class="menu-left__item ">
+                    <div class="menu-left__list-icon">
+                        <img src="./assets/icon/setting.png" alt="" class="menu-left__icon">
+                    </div>
+                    <a href="" class="menu-left__name">Thiết lập hệ thống</a>
+                </li>
+            </ul>
+        </div>
+
+        <!-- Content -->
+        <div class="content ">
+            <div class="content__header">
+                <div class="content__header-text">
+                    <div class="BD"><h2>BĐ</h2></div>
+                    <div class="text-title">
+                        <h3 class="title2">Nhà hàng Biển Đông</h3>
+                        <i class="fas fa-chevron-down"></i>
+                    </div>
+                </div>
+                <div class="content__header-accout">
+                    <div class="account">
+                        <i class="far fa-bell account__notification"></i>
+                        <img class="avatar" src="./assets/icon/avatar-default.png" alt="">
+                        <h3 class="label-field__input account-name">Nguyễn Văn Mạnh</h3>
+                        <i class="fas fa-ellipsis-h account__option"></i>
+                    </div>
+                </div>
+            </div>
+            <div class="content__body ">
+                <div class="content__action">
+                    <div class="content__action-title ">Danh sách nhân viên</div>
+                    <div class="content__action-button">
+                        <button class="content__action-button-btn ">
+                            <img class="button__icon-left" src="./assets/icon/add.png" alt="">
+                            <h3 class="button__text-add">Thêm Nhân Viên</h3>
+                        </button>
+                        <div class="button__down">
+                            <i class="fas fa-chevron-down"></i>
+                        </div>
+                    </div>
+                </div>
+                <div class="content__search">
+                    <div class="content__field">
+                        <div class="field">
+                            <img src="./assets/icon/search.png" alt="" class="field__icon">
+                            <input type="text" class="field__search " name="search" placeholder="Tìm kiếm theo Mã, Tên, Số điện thoại" id="">   
+                        </div>
+                        <div class="dropdown"> 
+                            <input type="text" class="dropdown-room dropdown-input active" placeholder="Tất cả phòng ban">
+                            <input type="text" class="dropdown-room dropdown-input" placeholder="Phòng Nhân Sự">
+                            <input type="text" class="dropdown-room dropdown-input" placeholder="Phòng Sản Xuất">
+                            <input type="text" class="dropdown-room dropdown-input" placeholder="Phòng Kinh Doanh">
+                            <input type="text" class="dropdown-room dropdown-input" placeholder="Phòng Đào Tạo">
+                            <i class="fas fa-chevron-down dropdown-icon"></i>
+                            <ul class="dropdown-list">
+                                <li class="dropdown-list__item dropdown-list__item-room  dropdown-list__item-focus">
+                                    <i class="fas fa-check"></i>
+                                    <span>
+                                        Tất cả phòng ban
+                                    </span>
+                                </li>
+                                <li class="dropdown-list__item dropdown-list__item-room">
+                                    <i class="fas fa-check"></i>
+                                    <span>
+                                        Phòng Nhân Sự
+                                    </span>
+                                </li>
+                                <li class="dropdown-list__item dropdown-list__item-room">
+                                    <i class="fas fa-check"></i>
+                                    <span>
+                                        Phòng Sản Xuât
+                                    </span>
+                                </li>
+                                <li class="dropdown-list__item dropdown-list__item-room">
+                                    <i class="fas fa-check"></i>
+                                    <span>
+                                        Phòng Kinh Doanh
+                                    </span>
+                                </li>
+                                <li class="dropdown-list__item dropdown-list__item-room">
+                                    <i class="fas fa-check"></i>
+                                    <span>
+                                        Phòng Đào Tạo
+                                    </span>
+                                </li>
+                            </ul>
+                        </div>
+                        <div class="dropdown">
+                            <input type="text" class="dropdown-location dropdown-input active" placeholder="Tất cả các vị trí">
+                            <input type="text" class="dropdown-location dropdown-input" placeholder="Fresher Web">
+                            <input type="text" class="dropdown-location dropdown-input" placeholder="Inter">
+                            <i class="fas fa-chevron-down dropdown-icon"></i>
+                            <ul class="dropdown-list">
+                                <li class="dropdown-list__item dropdown-list__item-location dropdown-list__item-focus">
+                                    <i class="fas fa-check"></i>
+                                    <span>
+                                        Tất cả các vị trí
+                                    </span>
+                                </li>
+                                <li class="dropdown-list__item dropdown-list__item-location">
+                                    <i class="fas fa-check"></i>
+                                    <span>
+                                        Fresher Web
+                                    </span>
+                                </li>
+                                <li class="dropdown-list__item dropdown-list__item-location">
+                                    <i class="fas fa-check"></i>
+                                    <span>
+                                        Inter
+                                    </span>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="content__search-refresh">
+                        <a href=""><img src="./assets/icon/refresh.png" alt=""></a>
+                    </div>
+                </div>
+                <div class="content-table">
+                    
+                </div>
+                <div class="content__pagination">
+                    <div class="show-number__person">Hiển thị <span>1-20/1000</span> nhân viên</div>
+                    <ul class="content__pagination-button">
+                        <li class="content__pagination-icon">
+                            <a href=""><img src="./assets/icon/btn-firstpage.svg" alt=""></a>
+                        </li>
+                        <li class="content__pagination-icon">
+                            <a href=""><img src="./assets/icon/btn-prev-page.svg" alt=""></a>
+                        </li>
+                        <li class="content__pagination-numbers content__pagination-numbers-focus">
+                            <a href="" class="content__pagination-numbers-item">1</a>
+                        </li>
+                        <li class="content__pagination-numbers">
+                            <a href="" class="content__pagination-numbers-item">2</a>
+                        </li>
+                        <li class="content__pagination-numbers">
+                            <a href="" class="content__pagination-numbers-item">3</a>
+                        </li>
+                        <li class="content__pagination-numbers">
+                            <a href="" class="content__pagination-numbers-item">4</a>
+                        </li>
+                        <li class="content__pagination-icon">
+                            <a href=""><img src="./assets/icon/btn-next-page.svg" alt=""></a>
+                        </li>
+                        <li class="content__pagination-icon">
+                            <a href=""><img src="./assets/icon/btn-lastpage.svg" alt=""></a>
+                        </li>
+                    </ul>
+                    <div class="content__pagination-numbershowed">
+                        <span>20</span> nhân viên/trang
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Staff Information -->
+        <div class="staff-information active">
+            <div class="container">
+                <div class="staff-information__person">
+                    <div class="staff-information__header">
+                        <span class="heading staff-information__header-heading">THÔNG TIN NHÂN VIÊN</span>
+                        <img src="./assets/icon/x.svg" alt="" class="staff-information__header-img">
+                    </div>
+                    <div class="row">
+                        <ul class="staff-information__img-person col-lg-3">
+                            <li>
+                                <img src="./assets/img/default-avatar.jpg" alt="">
+                            </li>
+                           <li>
+                                <span>(Vui lòng chọn ảnh có định 
+                                    dạng .jbg.,jebg,.png,.git )
+                                </span>
+                           </li>
+                        </ul>
+                        <div class="staff-information__information-person col-lg-9">
+                            <ul class="staff-information__general row">
+                                <li class="col-lg-12">
+                                    <span class="title staff-information__general-title">A. THÔNG TIN CHUNG</span>
+                                </li>
+                                <li class="staff-information__general-item col-lg-6">
+                                    <h3 class="staff-information__general-item-title2 title2">Mã nhân viên (
+                                        <span class="correct">*</span>
+                                        )</h3>
+                                    <input type="text" class="staff-information__input input" name="" placeholder="MF940" id="">   
+                                </li>
+                                <li class="staff-information__general-item col-lg-6">
+                                    <h3 class="staff-information__general-item-title2 title2">Họ và Tên (
+                                        <span class="correct">*</span>
+                                        )</h3>
+                                    <input type="text" class="staff-information__input input" name="" placeholder="Phạm Vũ Minh Quân" id="">   
+                                </li>
+                                <li class="staff-information__general-item col-lg-6">
+                                    <h3 class="staff-information__general-item-title2 title2">Ngày sinh</h3>
+                                    <div class="input-embrace">
+                                        <input type="text" class="staff-information__input input" name="" placeholder="11/12/2000" id="">   
+                                        <i class="far fa-calendar input-icon"></i>
+                                    </div>
+                                </li>
+                                <li class="staff-information__general-item col-lg-6">
+                                    <h3 class="staff-information__general-item-title2 title2">Giới tính</h3>
+                                    <div class="dropdown"> 
+                                        <span class="dropdown-boy active">Nam</span>
+                                        <span class="dropdown-boy ">Nữ</span>
+                                        <span class="dropdown-boy ">Khác</span>
+                                        <i class="fas fa-chevron-down dropdown-icon"></i>
+                                        <ul class="dropdown-list">
+                                            <li class="dropdown-list__item dropdown-list__item-boy dropdown-list__item-focus">
+                                                <i class="fas fa-check"></i>
+                                                <span>
+                                                    Nam
+                                                </span>
+                                            </li>
+                                            <li class="dropdown-list__item dropdown-list__item-boy">
+                                                <i class="fas fa-check"></i>
+                                                <span>
+                                                    Nữ
+                                                </span>
+                                            </li>
+                                            <li class="dropdown-list__item dropdown-list__item-boy">
+                                                <i class="fas fa-check"></i>
+                                                <span>
+                                                    Khác
+                                                </span>
+                                            </li>
+                                        </ul>
+                                    </div>  
+                                </li>
+                                <li class="staff-information__general-item col-lg-6">
+                                    <h3 class="staff-information__general-item-title2 title2">Số CMTMD/ Căn Cước (
+                                        <span class="correct">*</span>
+                                        )</h3>
+                                    <input type="text" class="staff-information__input input" name="" placeholder="154666252" id="">   
+                                </li>
+                                <li class="staff-information__general-item col-lg-6">
+                                    <h3 class="staff-information__general-item-title2 title2">Ngày cấp</h3>
+                                    <div class="input-embrace">
+                                        <input type="text" class="staff-information__input input" name="" placeholder="11/04/2011" id="">   
+                                        <i class="far fa-calendar input-icon"></i>
+                                    </div>
+                                </li>
+                                <li class="staff-information__general-item col-lg-6">
+                                    <h3 class="staff-information__general-item-title2 title2">Nơi cấp</h3>
+                                    <input type="text" class="staff-information__input input" name="" placeholder="Tỉnh Bắc Giang" id="">   
+                                </li>
+                                <li class="staff-information__general-item col-lg-6">
+                                </li>
+                                <li class="staff-information__general-item col-lg-6">
+                                    <h3 class="staff-information__general-item-title2 title2">Email (
+                                        <span class="correct">*</span>
+                                        )</h3>
+                                    <input type="text" class="staff-information__input input" name="" placeholder="quan111220@gmail.com" id="">   
+                                </li>
+                                <li class="staff-information__general-item col-lg-6">
+                                    <h3 class="staff-information__general-item-title2 title2">Số điện thoại (
+                                        <span class="correct">*</span>
+                                        )</h3>
+                                    <input type="text" class="staff-information__input input" name="" placeholder="0354992794" id="">   
+                                </li>
+                                <li class="col-lg-12 staff-information__work-title">
+                                    <span class="title staff-information__general-title">B. THÔNG CÔNG VIỆC</span>
+                                </li>
+                                <li class="staff-information__general-item col-lg-6">
+                                    <h3 class="staff-information__general-item-title2 title2">Vị trí</h3>
+                                    <div class="dropdown"> 
+                                        <span class="dropdown-staff__location active">Giám đốc</span>
+                                        <span class="dropdown-staff__location ">Phó giám đốc</span>
+                                        <span class="dropdown-staff__location ">Nhân viên</span>
+                                        <i class="fas fa-chevron-down dropdown-icon"></i>
+                                        <ul class="dropdown-list">
+                                            <li class="dropdown-list__item dropdown-list__item-staff__location dropdown-list__item-focus">
+                                                <i class="fas fa-check"></i>
+                                                <span>
+                                                    Giám đốc
+                                                </span>
+                                            </li>
+                                            <li class="dropdown-list__item dropdown-list__item-staff__location">
+                                                <i class="fas fa-check"></i>
+                                                <span>
+                                                    Phó giám đốc
+                                                </span>
+                                            </li>
+                                            <li class="dropdown-list__item dropdown-list__item-staff__location">
+                                                <i class="fas fa-check"></i>
+                                                <span>
+                                                    Nhân viên
+                                                </span>
+                                            </li>
+                                        </ul>
+                                    </div>  
+                                </li>
+                                <li class="staff-information__general-item col-lg-6">
+                                    <h3 class="staff-information__general-item-title2 title2">Phòng ban</h3>
+                                    <div class="dropdown"> 
+                                        <span class="dropdown-staff__room active">Phòng Nhân Sự</span>
+                                        <span class="dropdown-staff__room ">Phòng Đào Tạo</span>
+                                        <span class="dropdown-staff__room ">Phòng Sản Xuất</span>
+                                        <i class="fas fa-chevron-down dropdown-icon"></i>
+                                        <ul class="dropdown-list">
+                                            <li class="dropdown-list__item dropdown-list__item-staff__room dropdown-list__item-focus">
+                                                <i class="fas fa-check"></i>
+                                                <span>
+                                                    Phòng Nhân Sự
+                                                </span>
+                                            </li>
+                                            <li class="dropdown-list__item dropdown-list__item-staff__room">
+                                                <i class="fas fa-check"></i>
+                                                <span>
+                                                    Phòng Đào Tạo
+                                                </span>
+                                            </li>
+                                            <li class="dropdown-list__item dropdown-list__item-staff__room">
+                                                <i class="fas fa-check"></i>
+                                                <span>
+                                                    Phòng Sản Xuất
+                                                </span>
+                                            </li>
+                                        </ul>
+                                    </div>  
+                                </li>
+                                <li class="staff-information__general-item col-lg-6">
+                                    <h3 class="staff-information__general-item-title2 title2">Mã số thuế cá nhân</h3>
+                                    <input type="text" class="staff-information__input input" name="" placeholder="54222427754" id="">   
+                                </li>
+                                <li class="staff-information__general-item col-lg-6">
+                                    <h3 class="staff-information__general-item-title2 title2">Mức lương cơ bản</h3>
+                                    <div class="input-embrace">
+                                        <input type="text" class="staff-information__input input" name="" placeholder="28.000.000" id="">   
+                                        <span class="input-icon input-vnd">(VNĐ)</span>
+                                    </div>
+                                </li>
+                                <li class="staff-information__general-item col-lg-6">
+                                    <h3 class="staff-information__general-item-title2 title2">Ngày gia nhập công ty</h3>
+                                    <div class="input-embrace">
+                                        <input type="text" class="staff-information__input input" name="" placeholder="12/07/2021" id="">   
+                                        <i class="far fa-calendar input-icon"></i>
+                                    </div>
+                                </li>
+                                <li class="staff-information__general-item col-lg-6">
+                                    <h3 class="staff-information__general-item-title2 title2">Tình trạng công việc</h3>
+                                    <div class="dropdown"> 
+                                        <span class="dropdown-staff__job active">Đang làm việc</span>
+                                        <span class="dropdown-staff__job ">Sắp nghỉ rồi</span>
+                                        <i class="fas fa-chevron-down dropdown-icon"></i>
+                                        <ul class="dropdown-list">
+                                            <li class="dropdown-list__item dropdown-list__item-staff__job dropdown-list__item-focus">
+                                                <i class="fas fa-check"></i>
+                                                <span>
+                                                    Đang làm việc
+                                                </span>
+                                            </li>
+                                            <li class="dropdown-list__item dropdown-list__item-staff__job">
+                                                <i class="fas fa-check"></i>
+                                                <span>
+                                                    Sắp nghỉ rồi
+                                                </span>
+                                            </li>
+                                        </ul>
+                                    </div>  
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="staff-information__person-save">
+                        <div class="button-cancel">
+                            Hủy
+                        </div>
+                        <div class="button-save">
+                            <i class="far fa-save"></i>
+                            Lưu
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+    <script src="./js/person.js"></script>
+</html>

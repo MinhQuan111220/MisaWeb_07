@@ -211,4 +211,8 @@ body{
 .input-vnd{
     font-style: italic;
 }
+.input-money{
+    text-align: right;
+    padding-right: 59px;
+}
 

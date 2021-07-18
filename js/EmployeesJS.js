@@ -62,11 +62,8 @@ jQuery(document).ready(function(){
             $('.content-table').innerHTML = contenttable
 
             // Xu ly du lieu dropdown phong ban
-            var dropDownRoom_Input = ' '
             var listDropDownRoom = ' '
             for(var i=0; i<listDropdown(arrayRoom).length;i++){
-                dropDownRoom_Input = dropDownRoom_Input + 
-                `<input type="text" class="dropdown-room dropdown-input" value="${listDropdown(arrayRoom)[i]}">`
                 listDropDownRoom = listDropDownRoom + `
                 <li class="dropdown-list__item dropdown-list__item-room ">
                     <i class="fas fa-check"></i>
@@ -77,9 +74,9 @@ jQuery(document).ready(function(){
                 `
             }
             var dropDown__Room = ` 
-                <input type="text" class="dropdown-room dropdown-input active" value="Tất cả phòng ban">
-                ${dropDownRoom_Input}
-                <i class="fas fa-chevron-down dropdown-icon"></i>
+                <input type="text" class="dropdown-room dropdown-input active" placeholder="Tất cả phòng ban" >
+                <i class="fas fa-chevron-down dropdown-icon dropdown-icon__room"></i>
+                <i class="fas fa-chevron-up dropup-icon dropup-icon__room active"></i>
                 <ul class="dropdown-list dropdown-list__room">
                     <li class="dropdown-list__item dropdown-list__item-room  dropdown-list__item-focus">
                         <i class="fas fa-check"></i>
@@ -94,11 +91,10 @@ jQuery(document).ready(function(){
 
 
             // Xu lu dropdown vi tri
-            var dropDownLocation_Input = ' '
+            
             var listDropDownLocation = ' '
             for(var i=0; i<listDropdown(arrayLocation).length;i++){
-                dropDownLocation_Input = dropDownLocation_Input + 
-                `<input type="text" class="dropdown-location dropdown-input" value="${listDropdown(arrayLocation)[i]}">`
+                
                 listDropDownLocation = listDropDownLocation + `
                 <li class="dropdown-list__item dropdown-list__item-location ">
                     <i class="fas fa-check"></i>
@@ -109,9 +105,9 @@ jQuery(document).ready(function(){
                 `
             }
             var dropDown__Location = ` 
-                <input type="text" class="dropdown-location dropdown-input active" value="Tất cả các vị trí">
-                ${dropDownLocation_Input}
-                <i class="fas fa-chevron-down dropdown-icon"></i>
+            <input type="text" class="dropdown-location dropdown-input active" placeholder="Tất cả các vị trí">
+                <i class="fas fa-chevron-down dropdown-icon dropdown-icon__location"></i>
+                <i class="fas fa-chevron-up dropup-icon dropup-icon__location active"></i>
                 <ul class="dropdown-list dropdown-list__location">
                     <li class="dropdown-list__item dropdown-list__item-location  dropdown-list__item-focus">
                         <i class="fas fa-check"></i>
@@ -135,7 +131,7 @@ jQuery(document).ready(function(){
 
 
 
-
+            // HendelEvent
             const dropdown = $$('.dropdown');
             const dropdown_list = $$('.dropdown-list')
             const dropdown__room = $$('.dropdown-room')
@@ -144,37 +140,25 @@ jQuery(document).ready(function(){
             const dropdown__list__item__location =$$('.dropdown-list__item-location')
             const dropdown__boy = $$('.dropdown-boy')
             const dropdown__list__item__boy =$$('.dropdown-list__item-boy')
-            let click = [];
-            for(let i=0;i<dropdown.length;i++){
-                click[i]=0
-            }
-
-            dropdown.forEach((down,index)=>{
-                down.onclick = function(e){
-                    if(index===0 || index){
-                        click[index]++;
-                        if(click[index]===1){
-                            this.classList.add('focus')
-                            dropdown_list[index].classList.add('active')
-                        }
-                        else{
-                            this.classList.remove('focus')
-                            dropdown_list[index].classList.remove('active')
-                            click[index]=0
-                        }
-                    }
-                    e.preventDefault()
-                }
-            })
-
+           
             // list room
             dropdown__list__item__room.forEach((item,index)=>{
                 item.onclick=function(e){
                     $('.dropdown-list__item-room.dropdown-list__item-focus').classList.remove('dropdown-list__item-focus')
                     this.classList.add('dropdown-list__item-focus')
-                    $('.dropdown-room.active').classList.remove('active')
-                    dropdown__room[index].classList.add('active')
+                    $('.dropdown-room.dropdown-input').value = this.innerText
                     
+                    var valueRoom = $('.dropdown-room.dropdown-input').value.toLowerCase();
+                    var valueLocation = $('.dropdown-location.dropdown-input').value.toLowerCase();
+                    if(valueRoom === 'Tất cả phòng ban'.toLowerCase()){
+                        valueRoom = ''
+                        valueLocation = ''
+                    }
+                    
+                    jQuery('.staffTable tr').filter(function() {
+                        jQuery(this).toggle(jQuery(this).text().toLowerCase().indexOf(valueRoom)>-1
+                        && jQuery(this).text().toLowerCase().indexOf(valueLocation)>-1);
+                     });
                     e.preventDefault()
                 }
             })
@@ -183,8 +167,19 @@ jQuery(document).ready(function(){
                 item.onclick=function(e){
                     $('.dropdown-list__item-location.dropdown-list__item-focus').classList.remove('dropdown-list__item-focus')
                     this.classList.add('dropdown-list__item-focus')
-                    $('.dropdown-location.active').classList.remove('active')
-                    dropdown__location[index].classList.add('active')
+                    $('.dropdown-location.dropdown-input').value = this.innerText
+                    
+                    
+                    var valueRoom = $('.dropdown-room.dropdown-input').value.toLowerCase();
+                    var valueLocation = $('.dropdown-location.dropdown-input').value.toLowerCase();
+                    if(valueLocation === 'Tất cả các vị trí'.toLowerCase()){
+                        valueLocation = ''
+                        valueLocation = ''
+                    }
+                    jQuery('.staffTable tr').filter(function() {
+                        jQuery(this).toggle(jQuery(this).text().toLowerCase().indexOf(valueRoom)>-1
+                        && jQuery(this).text().toLowerCase().indexOf(valueLocation)>-1);
+                    });
                     e.preventDefault()
                 }
             })
@@ -244,28 +239,178 @@ jQuery(document).ready(function(){
 
             // tim kiem
             jQuery(document).ready(function() {
+                // tim kiếm theo tên, mã nhân viên, sddt
                 jQuery('.field__search ').on('keyup', function(e) {
                    e.preventDefault();
-                   /* Act on the event */
-                   var tukhoa = jQuery(this).val().toLowerCase();
-                   jQuery('.staffTable tr').filter(function() {
-                      jQuery(this).toggle(jQuery(this).text().toLowerCase().indexOf(tukhoa)>-1);
-                   });
+                   var value = jQuery(this).val().toLowerCase();
+
+                   var valueRoom = $('.dropdown-room.dropdown-input').value.toLowerCase();
+                   var valueLocation = $('.dropdown-location.dropdown-input').value.toLowerCase();
+
+                    jQuery('.staffTable tr').filter(function() {
+                        jQuery(this).toggle(jQuery(this).text().toLowerCase().indexOf(value)>-1 && 
+                        jQuery(this).text().toLowerCase().indexOf(valueRoom)>-1 && 
+                        jQuery(this).text().toLowerCase().indexOf(valueLocation)>-1);
+                    });
+                    
                 });
 
-                jQuery('.dropdown-input').on('keyup',function(e){
+                // Atuo tim kiem phong ban
+                
+                jQuery('.dropdown-room.dropdown-input').on('keyup',function(e){
                     e.preventDefault()
-                    var tukhoa = jQuery(this).val().toLowerCase();
+                    var value = jQuery(this).val().toLowerCase();
+                    
                     jQuery('.dropdown-list__room .dropdown-list__item-room').filter(function() {
-                        jQuery(this).toggle(jQuery(this).text().toLowerCase().indexOf(tukhoa)>-1);
+                        jQuery(this).toggle(jQuery(this).text().toLowerCase().indexOf(value)>-1);
                     });
-                    jQuery('.staffTable tr').filter(function() {
-                        jQuery(this).toggle(jQuery(this).text().toLowerCase().indexOf(tukhoa)>-1);
-                     });
-                    jQuery('.dropdown.dropdown__room').classList.add('focus')
+                   
+                    
+                    $$('.staffTable tr td:nth-child(8)').forEach((tr,index)=>{
+                        if(tr.innerText.toLowerCase().indexOf(value)>-1){
+                            $$('.staffTable tr')[index].style.display = ''
+                        }else{
+                            $$('.staffTable tr')[index].style.display = 'none'
+                            }
+                    })
+                    $('.dropdown.dropdown__room').classList.add('focus')
                 })
-             });
-           
+              
+                // Keydown Room
+                
+                var indexRoom= 0;
+                var arrayKeydownRoom = []
+                jQuery('.dropdown-room.dropdown-input').on("keydown",function(e){
+                    var value = $('.dropdown-room.dropdown-input').value.toLowerCase();
+                    var valueLocation = $('.dropdown-location.dropdown-input').value.toLowerCase();
+                    arrayKeydownRoom = jQuery('.dropdown-list__room .dropdown-list__item-room').filter(function() {
+                        return this.innerText.toLowerCase().indexOf(value) > -1
+                    });
+                    
+                    if (e.keyCode == 40) {
+                        indexRoom ++
+                        if(indexRoom >=arrayKeydownRoom.length){
+                            indexRoom = 0;
+                        }
+                        $('.dropdown-list__item-room.dropdown-list__item-focus').classList.remove('dropdown-list__item-focus')
+                        arrayKeydownRoom[indexRoom].classList.add('dropdown-list__item-focus')
+                    }
+                    else if (e.keyCode == 38) {
+                        indexRoom--
+                        if(indexRoom <0){
+                            indexRoom = arrayKeydownRoom.length-1;
+                        }
+                        $('.dropdown-list__item-room.dropdown-list__item-focus').classList.remove('dropdown-list__item-focus')
+                        arrayKeydownRoom[indexRoom].classList.add('dropdown-list__item-focus')
+                    }  
+                    else if(e.keyCode ==13){
+                        if(arrayKeydownRoom[indexRoom].innerText.toLowerCase() === 'Tất cả phòng ban'.toLowerCase()){
+                            
+                            $('.dropdown-room.dropdown-input').value = ''
+                        }
+                        else{
+                            $('.dropdown-room.dropdown-input').value = arrayKeydownRoom[indexRoom].innerText
+                        }
+                    }
+                    
+                })
+               
+                // Auto tim kiem vi tri
+                jQuery('.dropdown-location.dropdown-input.active').on('keyup',function(e){
+                    e.preventDefault()
+                    var value = jQuery(this).val().toLowerCase();
+                    jQuery('.dropdown-list__location .dropdown-list__item-location').filter(function() {
+                        jQuery(this).toggle(jQuery(this).text().toLowerCase().indexOf(value)>-1);
+                    });
+                   
+                    
+                    $$('.staffTable tr td:nth-child(7)').forEach((tr,index)=>{
+                       if(tr.innerText.toLowerCase().indexOf(value)>-1){
+                        $$('.staffTable tr')[index].style.display = ''
+                       }else{
+                        $$('.staffTable tr')[index].style.display = 'none'
+                       }
+                    })
+                    $('.dropdown.dropdown__location').classList.add('focus')
+                })
+
+                // Keydown Location
+                
+                var indexLocation= 0;
+                var arrayKeydownLocation = []
+                jQuery('.dropdown-location.dropdown-input').on("keydown",function(e){
+                    var value = $('.dropdown-location.dropdown-input').value.toLowerCase();
+                    var valueRoom = $('.dropdown-room.dropdown-input').value.toLowerCase();
+                    arrayKeydownLocation = jQuery('.dropdown-list__location .dropdown-list__item-location').filter(function() {
+                        return this.innerText.toLowerCase().indexOf(value) > -1 
+                    });
+                    
+                    if (e.keyCode == 40) {
+                        indexLocation ++
+                        if(indexLocation >=arrayKeydownLocation.length){
+                            indexLocation = 0;
+                        }
+                        $('.dropdown-list__item-location.dropdown-list__item-focus').classList.remove('dropdown-list__item-focus')
+                        arrayKeydownLocation[indexLocation].classList.add('dropdown-list__item-focus')
+                    }
+                    else if (e.keyCode == 38) {
+                        indexLocation--
+                        if(indexLocation <0){
+                            indexLocation = arrayKeydownLocation.length-1;
+                        }
+                        $('.dropdown-list__item-location.dropdown-list__item-focus').classList.remove('dropdown-list__item-focus')
+                        arrayKeydownLocation[indexLocation].classList.add('dropdown-list__item-focus')
+                    }  
+                    else if(e.keyCode ==13){
+                        if(arrayKeydownLocation[indexLocation].innerText.toLowerCase() === 'Tất cả phòng ban'.toLowerCase()){
+                            
+                            $('.dropdown-location.dropdown-input').value = ''
+                        }
+                        else{
+                            $('.dropdown-location.dropdown-input').value = arrayKeydownLocation[indexLocation].innerText
+                        }
+                    }
+                    
+                })
+               
+            });
+            // Onclick dropdown
+            let click = [];
+            for(let i=0;i<dropdown.length;i++){
+                click[i]=0
+            }
+            dropdown.forEach((down,index)=>{
+                down.onclick = function(e){
+                    dropdown_list[index].classList.add('active')
+                    $$('.dropdown-icon')[index].classList.add('active')
+                    $$('.dropup-icon')[index].classList.remove('active')
+                }
+            })
+            
+            // Click Windown
+                jQuery(window).on("click.Bst", function(event){	
+                        var itemClickWindown = ['room','location','boy','staff-location','staff-room','staff-job']	
+                        for(var i=0;i<itemClickWindown.length;i++){
+                            if ( 
+                                jQuery(`.dropdown__${itemClickWindown[[i]]}`).has(event.target).length == 0 
+                                &&
+                                !jQuery(`.dropdown__${itemClickWindown[[i]]}`).is(event.target) 
+                                ){
+                                    $(`.dropdown-list__${itemClickWindown[[i]]}`).classList.remove('active')
+                                    $(`.dropdown__${itemClickWindown[[i]]}`).classList.remove('focus')
+                                    $(`.dropdown-icon__${itemClickWindown[[i]]}`).classList.remove('active')
+                                    $(`.dropup-icon__${itemClickWindown[[i]]}`).classList.add('active')
+                                } else {
+                                    $(`.dropdown-list__${itemClickWindown[[i]]}`).classList.add('active')
+                                    $(`.dropdown__${itemClickWindown[[i]]}`).classList.add('focus')
+                                }
+                        }
+                        
+                });
+
+            
+            
+            
         }).fail(function(res){
     
         })

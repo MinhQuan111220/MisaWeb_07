@@ -77,7 +77,7 @@ body{
     cursor: pointer;
 }
 .button-save i {
-    margin: 0 8px 0 24px;
+    margin: 0 8px 0 0;
 }
 .button-save:hover{
     background-color: #2FBE8E;
@@ -123,7 +123,8 @@ body{
     border: 0;
     outline: none;
 }
-.dropdown-icon{
+.dropdown-icon,
+.dropup-icon{
     padding: 0 12px;
     cursor: pointer;
     border-bottom-right-radius: 3px;
@@ -133,14 +134,25 @@ body{
     border-left: 1px solid #bbbbbb;
     line-height: 38.5px;
 }
+.dropup-icon{
+    background-color: #E5E5E5;
+    border-left: 1px solid #E5E5E5;
+}
 .dropdown-icon:hover{
     background-color: #E5E5E5;
     border-left: 1px solid #E5E5E5;
+}
+.dropdown-icon.active,
+.dropup-icon.active{
+    display: none;
+   
 }
 .dropdown-list{
     list-style: none;
     position: absolute;
     width: 100%;
+    max-height: 280px;
+    overflow: hidden;
     padding: 0;
     background-color: #ffffff;
     left: 0;

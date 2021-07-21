@@ -3,15 +3,17 @@
     background-color: rgba(0, 0, 0, 0.3);
     width: 100%;
     z-index: 1;
+    padding-top: 24px;
 }
 .staff-information.active{
     display: none;
 }
 .staff-information__person{
     background-color: #ffffff;
-    width: 100%;
-    margin-top: 24px;
+    width: 840px;
+    margin : 0 auto;
     border-radius: 8px;
+    
 }
 /* header */
 .staff-information__header{
@@ -30,19 +32,24 @@
 /* information */
 .staff-information__img-person{
     text-align: center;
-    padding: 24px;
+    padding: 24px 12px 0 36px;
     list-style: none;
 }
 
 .staff-information__img-person img{
     border: 1px solid #bbbbbb;
-    width: 80%;
+    width: 100%;
     border-radius: 50%;
+   
 }
 
 .staff-information__general{
     list-style: none;
     padding-top: 24px;
+    padding-left: 0;
+    width: 98%;
+}
+.staff-information__general li{
     padding-left: 0;
 }
 .staff-information__general-title{
@@ -57,8 +64,11 @@
     background-color: #01B075;
     top: 110%;
 }
+.staff-information__general-item{
+    padding-left: 0;
+}
 .staff-information__general-item .dropdown{
-   width: 90%;
+   width: 100%;
 }
 .staff-information__general-item-title2{
     padding: 24px 0 4px 0;
@@ -70,7 +80,10 @@
 .staff-information__work-title{
     padding-top: 24px;
 }
-
+.dropdown-list__staff-location,
+.dropdown-list__staff-room{
+    z-index: 10;
+}
 /* save */
 .staff-information__person-save{
     display: flex;
@@ -82,3 +95,4 @@
     justify-content: flex-end;
     align-items: center;
 }
+

@@ -9,9 +9,11 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
     <link rel="stylesheet" href="./assets/font/fontawesome-5.15.1/css/all.css">
     
+    <link rel="stylesheet" href="./assets/css/formWarning.css">
     <link rel="stylesheet" href="./assets/css/staff_information.css">
     <link rel="stylesheet" href="./assets/css/menu.css">
     <link rel="stylesheet" href="./assets/css/content.css">
+    <link rel="stylesheet" href="./assets/css/active.css">
     <link rel="stylesheet" href="./assets/css/base.css">
 
    
@@ -93,14 +95,20 @@
                 <div class="content__action">
                     <div class="content__action-title ">Danh sách nhân viên</div>
                     <div class="content__action-button">
-                        <button class="content__action-button-btn ">
+                        <!-- <button class="content__action-button-btn delete">
+                            <i class="far fa-trash-alt"></i>
+                            <h3 class="button__text-add">Xóa Nhân Viên</h3>
+                        </button> -->
+                        <button class="content__action-button-btn add">
                             <img class="button__icon-left" src="./assets/icon/add.png" alt="">
                             <h3 class="button__text-add">Thêm Nhân Viên</h3>
                         </button>
-                        <div class="button__down">
+                        <!-- <div class="button__down">
                             <i class="fas fa-chevron-down"></i>
                         </div>
+                         -->
                     </div>
+                    
                 </div>
                 <div class="content__search">
                     <div class="content__field">
@@ -179,16 +187,12 @@
                                         <span class="title staff-information__general-title">A. THÔNG TIN CHUNG</span>
                                     </li>
                                     <li class="staff-information__general-item col-lg-6 form-group ">
-                                        <h3 class="staff-information__general-item-title2 title2">Mã nhân viên (
-                                            <span class="correct">*</span>
-                                            )</h3>
+                                        <h3 class="staff-information__general-item-title2 title2">Mã nhân viên(<span class="correct">*</span>)</h3>
                                         <input type="text" class="staff-information__input input auto-focus__input" name="EmployeeCode" value="" id="EmployeeCode">
                                         <div class="form-message"></div>   
                                     </li>
                                     <li class="staff-information__general-item col-lg-6 form-group">
-                                        <h3 class="staff-information__general-item-title2 title2">Họ và Tên (
-                                            <span class="correct">*</span>
-                                            )</h3>
+                                        <h3 class="staff-information__general-item-title2 title2">Họ và Tên(<span class="correct">*</span>)</h3>
                                         <input type="text" class="staff-information__input input" name="FullName"  id="FullName" value="">
                                         <div class="form-message"></div>      
                                     </li>
@@ -223,16 +227,14 @@
                                                     <i class="fas fa-check"></i>
                                                     <span style= "display: none; ">2</span>
                                                     <span>
-                                                        Khác
+                                                        Không xác định
                                                     </span>
                                                 </li>
                                             </ul>
                                         </div>  
                                     </li>
                                     <li class="staff-information__general-item col-lg-6 form-group">
-                                        <h3 class="staff-information__general-item-title2 title2">Số CMTMD/ Căn Cước (
-                                            <span class="correct">*</span>
-                                            )</h3>
+                                        <h3 class="staff-information__general-item-title2 title2">Số CMTMD/ Căn Cước(<span class="correct">*</span>)</h3>
                                         <input type="text" class="staff-information__input input" name="IdentityNumber"  id="IdentityNumber">
                                         <div class="form-message"></div>   
                                     </li>
@@ -250,16 +252,12 @@
                                     <li class="staff-information__general-item col-lg-6 form-group">
                                     </li>
                                     <li class="staff-information__general-item col-lg-6 form-group">
-                                        <h3 class="staff-information__general-item-title2 title2">Email (
-                                            <span class="correct">*</span>
-                                            )</h3>
+                                        <h3 class="staff-information__general-item-title2 title2">Email(<span class="correct">*</span>)</h3>
                                         <input type="text" class="staff-information__input input" name="Email" placeholder="quan111220@gmail.com" id="Email">   
                                         <div class="form-message"></div> 
                                     </li>
                                     <li class="staff-information__general-item col-lg-6 form-group">
-                                        <h3 class="staff-information__general-item-title2 title2">Số điện thoại (
-                                            <span class="correct">*</span>
-                                            )</h3>
+                                        <h3 class="staff-information__general-item-title2 title2">Số điện thoại(<span class="correct">*</span>)</h3>
                                         <input type="text" class="staff-information__input input" name="PhoneNumber"  id="PhoneNumber">  
                                         <div class="form-message"></div> 
                                     </li>
@@ -296,7 +294,7 @@
                                     <li class="staff-information__general-item col-lg-6 form-group">
                                         <h3 class="staff-information__general-item-title2 title2">Mức lương cơ bản</h3>
                                         <div class="input-embrace">
-                                            <input type="text" class="staff-information__input input input-money" name="Salary"  id="Salary">   
+                                            <input  class="staff-information__input input input-money" name="Salary"  id="Salary">   
                                             <span class="input-icon input-vnd">(VNĐ)</span>
                                         </div>
                                     </li>
@@ -332,7 +330,7 @@
                                 </ul>
                             </div>
                         </div>
-                        <div class="staff-information__person-save">
+                        <div class="div-btn">
                             <div class="button-cancel">
                                 Hủy
                             </div>
@@ -345,6 +343,31 @@
                 </div>
             </div>
         </div>
+
+        <!-- form Warning -->
+        <div class="form-warning" style="display: none;">
+            <div class="form-warning__delete" >
+                <img src="./assets/icon/x.svg" alt="" class="form-warning__delete-exit">
+                <h3 class="title2 form-warning__delete-header">Xóa  nhân viên</h3>
+                <div class="form-warning__delete-content">
+                    <div class="form-warning__delete-icon">
+                        <i class="fas fa-exclamation-triangle"></i>
+                    </div>
+                    <h3 class="lable">Bạn có chắc chắn muốn xóa nhân viên 
+                        <span class="title2"></span>
+                        ra khỏi danh sách không ?
+                    </h3>
+                </div>
+                <div class="div-btn">
+                    <div class="button-cancel">
+                        Hủy
+                    </div>
+                    <button class="button-delete" id="button-delete">
+                        Xóa
+                    </button>
+                </div>
+            </div>
+        </div>
     </div>
 
     <div class="delete-scroll"></div>
@@ -352,8 +375,8 @@
 </body>
 <script src=" https://code.jquery.com/jquery-3.6.0.min.js"></script> 
 
-<script src="./js/baseData.js"></script>
 <script src="./js/Vadilator.js"></script>
-<script src="./js/EmployeesJS.js"></script>
-
+<script src="./js/Format.js"></script>
+<script src="./js/BaseData.js"></script>
+<script src="./js/EmployeesOOp.js"></script>
 </html>

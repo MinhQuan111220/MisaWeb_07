@@ -1,0 +1,46 @@
+/* dropdown */
+.dropdown-room,
+.dropdown-location,
+.dropdown-boy,
+.dropdown-staff__room,
+.dropdown-staff__location,
+.dropdown-staff__job{
+    display: none;
+}
+.dropdown-room.active,
+.dropdown-location.active,
+.dropdown-boy.active,
+.dropdown-staff__room.active,
+.dropdown-staff__location.active,
+.dropdown-staff__job.active{
+    display: block;
+}
+.dropdown.dropdown__boy,
+.dropdown.dropdown__staff-room,
+.dropdown.dropdown__staff-location,
+.dropdown.dropdown__staff-job{
+    padding-left: 0;
+}
+.dropdown-boy.input,
+.dropdown-staff__room.input,
+.dropdown-staff__location.input,
+.dropdown-staff__job.input{
+   border: none;
+   height: 39px;
+}
+.dropdown-boy.input:focus,
+.dropdown-staff__room.input:focus,
+.dropdown-staff__location.input:focus,
+.dropdown-staff__job.input:focus{
+    border: none;
+    cursor: inherit;
+}
+.dropdown-boy.input:hover,
+.dropdown-staff__room.input:hover,
+.dropdown-staff__location.input:hover,
+.dropdown-staff__job.input:hover{
+    cursor: initial;
+}
+.dropdown-room:focus~ .dropdown-list__room{
+    display: block;
+}

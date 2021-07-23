@@ -1,7 +1,6 @@
 
 .content{
-    /* flex: 1; */
-    width: calc(100vw - 220px);
+    width: calc(100vw - 200px);
     position: relative;
     height: 100vh;
 }
@@ -109,17 +108,14 @@
     align-items: center;
     padding: 0 16px;
     background-color: #019160;
-    border-bottom-left-radius: 4px;
-    border-top-left-radius: 4px;
+    border-radius: 4px;
     border: 1px solid #2FBE8E;
-    border-left: 0;
-    border-bottom: 0;
-    border-top: 0;
     height: 40px;
     min-width: 100px;
     color: #ffffff;
     font-size: 13px;
     font-family: GoogleSans-Regular;
+    margin-left: 10px;
 }
 .content__action-button-btn:hover,
 .button__down:hover{
@@ -198,7 +194,7 @@
 /* Table */
 .content-table{
     width: 100%;
-    height: 650px;
+    height: calc(100vh - 260px);
     overflow: hidden;
     overflow-y: auto;
     overflow-x: scroll;
@@ -213,13 +209,13 @@ tr .active{
     height: 6px;
     background-color: #bbbbbb;
 }
-::-webkit-scrollbar-thumb
+.content-table::-webkit-scrollbar-thumb
 {   
     min-height: 40px;
     background-color: #454545;
     border-radius: 4px;
 }
-::-webkit-scrollbar-track-piece {
+.content-table::-webkit-scrollbar-track-piece {
   margin-top: 39px;
 }
 .delete-scroll{
@@ -227,7 +223,7 @@ tr .active{
     display: block;
     position: absolute;
     top: 172px;
-    right: 15px;
+    right: 12px;
     width: 6px;
     height: 39px;
     background-color: #ffffff;
@@ -273,6 +269,7 @@ table th, td{
     list-style: none;
     align-items: center;
     margin: 0;
+    padding: 0;
 }
 .content__pagination-icon{
     margin:  0 12px;
@@ -295,7 +292,7 @@ table th, td{
     text-decoration: none;
     color: #000000;
     font-size: 13px;
-    line-height: 40px;
+    line-height: 34px;
     width: 100%;
 }
 .content__pagination-numbers-item:hover{
@@ -303,10 +300,10 @@ table th, td{
     color: #000000;
 }
 .content__pagination-numbers{
-    width: 40px;
-    height: 40px;
+    width: 34px;
+    height: 34px;
     border: 1px solid #bbbbbb;
-    border-radius: 24px;
+    border-radius: 50%;
     margin: 0 12px;
     background-color: #E9EBEE;
     cursor: pointer;
@@ -322,49 +319,3 @@ table th, td{
     background-color: #2FBE8E;
 }
 
-/* dropdown */
-.dropdown-room,
-.dropdown-location,
-.dropdown-boy,
-.dropdown-staff__room,
-.dropdown-staff__location,
-.dropdown-staff__job{
-    display: none;
-}
-.dropdown-room.active,
-.dropdown-location.active,
-.dropdown-boy.active,
-.dropdown-staff__room.active,
-.dropdown-staff__location.active,
-.dropdown-staff__job.active{
-    display: block;
-}
-.dropdown.dropdown__boy,
-.dropdown.dropdown__staff-room,
-.dropdown.dropdown__staff-location,
-.dropdown.dropdown__staff-job{
-    padding-left: 0;
-}
-.dropdown-boy.input,
-.dropdown-staff__room.input,
-.dropdown-staff__location.input,
-.dropdown-staff__job.input{
-   border: none;
-   height: 39px;
-}
-.dropdown-boy.input:focus,
-.dropdown-staff__room.input:focus,
-.dropdown-staff__location.input:focus,
-.dropdown-staff__job.input:focus{
-    border: none;
-    cursor: inherit;
-}
-.dropdown-boy.input:hover,
-.dropdown-staff__room.input:hover,
-.dropdown-staff__location.input:hover,
-.dropdown-staff__job.input:hover{
-    cursor: initial;
-}
-.dropdown-room:focus~ .dropdown-list__room{
-    display: block;
-}

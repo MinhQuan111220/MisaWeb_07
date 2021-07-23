@@ -1,0 +1,44 @@
+.form-warning{
+    position: absolute;
+    background-color: rgba(0, 0, 0, 0.3);
+    width: 100%;
+    height: 100%;
+    z-index: 4;
+}
+.form-warning__delete{
+    background-color: #ffffff;
+    width: 400px; 
+    margin-left: calc(50% - 200px);
+    margin-top: 100px;
+    z-index: 1;
+    border-radius: 4px;
+    position: relative;
+}
+.form-warning__delete-exit{
+    position: absolute;
+    right: 4px;
+    width: 20px;
+    top: 4px;
+    color: #bbbbbb;
+    z-index: 10;
+}
+.form-warning__delete-header
+{
+    padding: 24px ;
+}
+.form-warning__delete-content{
+    padding: 0 24px 24px;
+    display: flex;
+}
+.form-warning__delete-icon{
+    height: 30px;
+    width: 50px;
+    background-color: #bbbbbb;
+    border-radius: 50%;
+    text-align: center;
+    margin-right: 10px;
+}
+.form-warning__delete-icon i{
+    line-height: 30px;
+    color: #F65454 ;
+}

@@ -1,0 +1,33 @@
+/* Input */
+.input-embrace{
+    width: 100%;
+    position: relative;
+}
+.input{
+    height: 40px;
+    width: 100%;
+    border-radius: 4px;
+    border : 1px solid #bbbbbb;
+    padding-left: 16px;
+    outline: none;
+    color: #000000;
+    font-size: 13px;
+    font-family: GoogleSans-Regular;
+}
+.input:focus,
+.auto-focus__input:focus{
+    border : 1px solid #019160;
+}
+.input-icon{
+    position: absolute;
+    font-size: 13px;
+    top: 12px;
+    right: 24px;
+}
+.input-vnd{
+    font-style: italic;
+}
+.input-money{
+    text-align: right;
+    padding-right: 69px;
+}

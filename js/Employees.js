@@ -31,7 +31,7 @@ class EmployeesBase extends BaseJS{
         // Xử lý các sự kiện
         this.HendelEvent()
 
-        console.log(this.formatMoney(123456))
+        //  Xử lý phân trang  
     }
 
     /*
@@ -49,6 +49,16 @@ class EmployeesBase extends BaseJS{
         }).done(function(res){
            EmployeeCode = res
         }).fail(function(res){
+            switch (res.status) {
+                    case 500:
+                        console.log('Có lỗi từ server, vui lòng thử lại');
+                        break;
+                    case 400:
+                        console.log('Dữ liệu không hợp lệ');
+                        break;
+                    default:
+                        break;
+                }
 
         })
 
@@ -75,6 +85,16 @@ class EmployeesBase extends BaseJS{
             })
             $('.dropdown-list__staff-room').innerHTML = listDepartmentName
         }).fail(function(res){
+            switch (res.status) {
+                    case 500:
+                        console.log('Có lỗi từ server, vui lòng thử lại');
+                        break;
+                    case 400:
+                        console.log('Dữ liệu không hợp lệ');
+                        break;
+                    default:
+                        break;
+                }
 
         })
 
@@ -100,6 +120,16 @@ class EmployeesBase extends BaseJS{
             })
             $('.dropdown-list__staff-location').innerHTML = listPositionName
         }).fail(function(res){
+            switch (res.status) {
+                    case 500:
+                        console.log('Có lỗi từ server, vui lòng thử lại');
+                        break;
+                    case 400:
+                        console.log('Dữ liệu không hợp lệ');
+                        break;
+                    default:
+                        break;
+                }
 
         })
 
@@ -109,6 +139,7 @@ class EmployeesBase extends BaseJS{
             url : "http://cukcuk.manhnv.net/v1/Employees",
             method : "GET"
         }).done(function(res){
+            var listEmployeesLength = res.length
             var html =' '
             var arrayRoom = []
             var arrayLocation = []
@@ -118,7 +149,7 @@ class EmployeesBase extends BaseJS{
             var arrayIdentityNumber = []
             jQuery.each(res,function(index,object){
                 html = html + ` 
-                <tr class="${(index%2)===0 ? "even" :''} staff-indexnformation__list-table">
+                <tr class="${(index%2)===0 ? "even" :''} staff-indexnformation__list-table ">
                     <td class="content-table__column delete"><i class="far fa-trash-alt"></i></td>
                     <td class="content-table__column">${Format.formatNull(object.EmployeeCode)}</td>
                     <td class="content-table__column">${Format.formatNull(object.FullName)}</td>
@@ -172,12 +203,51 @@ class EmployeesBase extends BaseJS{
                 </table>`
             $('.content-table').innerHTML = contenttable
 
-           
+            var emPloyeesInPage = 20;
+            var htmlPages = ''
+            for(var i=0;i<Format.pages(listEmployeesLength,emPloyeesInPage);i++){
+                htmlPages += `
+                <li class="content__pagination-numbers ${i===0? 'content__pagination-numbers-focus': ''}">
+                    <a href="" class="content__pagination-numbers-item">${i+1}</a>
+                </li>`
+            }
+            $('.list-pagination').innerHTML = htmlPages
+            $$('.staff-indexnformation__list-table').forEach((item,index)=>{
+               if(index>=20){
+                   item.classList.add('active')
+               }
+            })
+            $$('.content__pagination-numbers').forEach((item,index)=>{
+                item.onclick= function(e){
+                    $('.content__pagination-numbers.content__pagination-numbers-focus').classList.remove('content__pagination-numbers-focus')
+                    for(var i=0;i<listEmployeesLength;i++){
+                        if(((index*emPloyeesInPage)<=i&& i<(emPloyeesInPage*(index+1)))){
+                            $$('.staff-indexnformation__list-table')[i].classList.remove('active')
+                        }
+                        else{
+                            $$('.staff-indexnformation__list-table')[i].classList.add('active')
+                        }
+                    this.classList.add('content__pagination-numbers-focus')
+                        }
+                    e.preventDefault()
+                    }
+                }
+            )
             _this.HendelEvent(arrayRoom,arrayLocation)
             _this.add(arrayEmployeeCode,EmployeeCode,DepartmentName,PositionName,arrayIdentityNumber)
             _this.update(arrayEmployeeID)
             _this.delete(arrayEmployeeFullName,arrayEmployeeID)
         }).fail(function(res){
+            switch (res.status) {
+                    case 500:
+                        console.log('Có lỗi từ server, vui lòng thử lại');
+                        break;
+                    case 400:
+                        console.log('Dữ liệu không hợp lệ');
+                        break;
+                    default:
+                        break;
+                }
     
         })
         } catch (error) {
@@ -334,9 +404,7 @@ class EmployeesBase extends BaseJS{
                        $('#DateOfBirth').type = 'text'
                        $('#DateOfBirth').value = Format.formatDate(res.DateOfBirth)
                    }
-                   $('#DateOfBirth').oninput = function(){
-                       $('#DateOfBirth').type ='date'
-                   }
+
                    $('#GenderName').value = res.GenderName
                    $('#IdentityNumber').value = res.IdentityNumber
 
@@ -346,9 +414,7 @@ class EmployeesBase extends BaseJS{
                        $('#IdentityDate').type = 'text'
                        $('#IdentityDate').value = Format.formatDate(res.IdentityDate)
                    }
-                   $('#IdentityDate').oninput = function(){
-                       $('#IdentityDate').type ='date'
-                   }
+                   
                    $('#IdentityPlace').value = res.IdentityPlace
                    $('#Email').value = res.Email
                    $('#PhoneNumber').value = res.PhoneNumber
@@ -381,9 +447,7 @@ class EmployeesBase extends BaseJS{
                        $('#JoinDate').value = Format.formatDate(res.JoinDate)
                    }
                    
-                   $('#JoinDate').oninput = function(){
-                       $('#JoinDate').type ='date'
-                   }
+                   
                    $('#Salary').value = Format.formatMoney(res.Salary)
                    $('.staff-information').classList.remove('active')
 
@@ -437,6 +501,16 @@ class EmployeesBase extends BaseJS{
                            }  
                        })
                }).fail(function(res){
+                   switch (res.status) {
+                    case 500:
+                        console.log('Có lỗi từ server, vui lòng thử lại');
+                        break;
+                    case 400:
+                        console.log('Dữ liệu không hợp lệ');
+                        break;
+                    default:
+                        break;
+                }
                })
 
            }
@@ -472,6 +546,16 @@ class EmployeesBase extends BaseJS{
                         $('.form-warning').style.display = 'none'
                        _this.loadData()
                     }).fail(function(res){
+                        switch (res.status) {
+                    case 500:
+                        console.log('Có lỗi từ server, vui lòng thử lại');
+                        break;
+                    case 400:
+                        console.log('Dữ liệu không hợp lệ');
+                        break;
+                    default:
+                        break;
+                }
             
                     })
                     e.preventDefault()
@@ -866,7 +950,7 @@ class EmployeesBase extends BaseJS{
         jQuery('.input-money').on('input', function(){
             var value = jQuery('.input-money').val();
             var afterformat = String(value).replaceAll('.','');
-            jQuery('.input-money').val(salary_this(afterformat));
+            jQuery('.input-money').val(Format.salaryFormat(afterformat));
         })
 
         // Khi cuộn table

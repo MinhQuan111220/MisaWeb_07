@@ -83,6 +83,7 @@ body{
     font-family: GoogleSans-Regular;
     text-align: center;
     line-height: 40px;
+    margin-left: 16px;
 }
 .button-save,.button-delete{
     border-radius: 4px;
@@ -287,3 +288,6 @@ body{
     top: 50px;
     right: 46%;
 }
+
+
+

@@ -270,6 +270,14 @@ table th, td{
     align-items: center;
     margin: 0;
     padding: 0;
+    width: calc(100vw / 3);
+}
+.list-pagination{
+    display: flex;
+    list-style: none;
+    align-items: center;
+    margin: 0 ;
+    padding: 0 ;
 }
 .content__pagination-icon{
     margin:  0 12px;
@@ -288,6 +296,7 @@ table th, td{
     background-color: #ffffff;
     border: 1px solid #bbbbbb;
 }
+
 .content__pagination-numbers-item{
     text-decoration: none;
     color: #000000;

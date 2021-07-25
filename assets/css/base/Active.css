@@ -44,3 +44,7 @@
 .dropdown-room:focus~ .dropdown-list__room{
     display: block;
 }
+
+.staff-indexnformation__list-table.active{
+    display: none;
+}

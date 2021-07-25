@@ -21,6 +21,7 @@
     top: 4px;
     color: #bbbbbb;
     z-index: 10;
+    cursor: pointer;
 }
 .form-warning__delete-header
 {

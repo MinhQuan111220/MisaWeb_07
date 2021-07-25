@@ -7,14 +7,14 @@
     <title>Document</title>
     
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
-    <link rel="stylesheet" href="./assets/font/fontawesome-5.15.1/css/all.css">
+    <link rel="stylesheet" href="../assets/font/fontawesome-5.15.1/css/all.css">
     
-    <link rel="stylesheet" href="./assets/css/formWarning.css">
-    <link rel="stylesheet" href="./assets/css/staff_information.css">
-    <link rel="stylesheet" href="./assets/css/menu.css">
-    <link rel="stylesheet" href="./assets/css/content.css">
-    <link rel="stylesheet" href="./assets/css/active.css">
-    <link rel="stylesheet" href="./assets/css/base.css">
+    <link rel="stylesheet" href="../assets/css/layout/FormWarning.css">
+    <link rel="stylesheet" href="../assets/css/layout/Content.css">
+    <link rel="stylesheet" href="../assets/css/layout/Menu.css">
+    <link rel="stylesheet" href="../assets/css/layout/Staff_information.css">
+    <link rel="stylesheet" href="../assets/css/base/Active.css">
+    <link rel="stylesheet" href="../assets/css/base/Base.css">
 
    
 </head>
@@ -27,45 +27,45 @@
             <!-- Menu left -->
             <div class="menu-left__logo">
                 <div class="icon-box">
-                    <img class="icon-toggle" src="./assets/img/toggle.png" alt="" class="icon-toggle">
+                    <img class="icon-toggle" src="../assets/img/toggle.png" alt="" class="icon-toggle">
                 </div>
                 <div class="logo-box">
-                    <img class="logo" src="./assets/img/cukcuk-logo.png" alt="">
+                    <img class="logo" src="../assets/img/cukcuk-logo.png" alt="">
                 </div>
             </div>
             <!-- Menu Left Content -->
             <ul class="menu-left__content">
                 <li class="menu-left__item ">
                     <div class="menu-left__list-icon">
-                        <img src="./assets/icon/dashboard.png" alt="" class="menu-left__icon">
+                        <img src="../assets/icon/dashboard.png" alt="" class="menu-left__icon">
                     </div>
                     <a href="" class="menu-left__name">Tổng quan</a>
                     
                 </li>
                 <li class="menu-left__item ">
                     <div class="menu-left__list-icon">
-                        <img src="./assets/icon/report.png" alt="" class="menu-left__icon">
+                        <img src="../assets/icon/report.png" alt="" class="menu-left__icon">
                     </div>
                     <a href="" class="menu-left__name">Báo cáo</a>
                     
                 </li>
                 <li class="menu-left__item ">
                     <div class="menu-left__list-icon">
-                        <img src="./assets/icon/dashboard.png" alt="" class="menu-left__icon">
+                        <img src="../assets/icon/dashboard.png" alt="" class="menu-left__icon">
                     </div>
                     <a href="" class="menu-left__name"> Mua hàng</a>
                    
                 </li>
                 <li class="menu-left__item menu-left__item-focus">
                     <div class="menu-left__list-icon">
-                        <img src="./assets/icon/dic-employee.png" alt="" class="menu-left__icon">
+                        <img src="../assets/icon/dic-employee.png" alt="" class="menu-left__icon">
                     </div>
                     <a href="" class="menu-left__name"> Danh mục nhân viên</a>
                    
                 </li>
                 <li class="menu-left__item ">
                     <div class="menu-left__list-icon">
-                        <img src="./assets/icon/setting.png" alt="" class="menu-left__icon">
+                        <img src="../assets/icon/setting.png" alt="" class="menu-left__icon">
                     </div>
                     <a href="" class="menu-left__name">Thiết lập hệ thống</a>
                 </li>
@@ -85,7 +85,7 @@
                 <div class="content__header-accout">
                     <div class="account">
                         <i class="far fa-bell account__notification"></i>
-                        <img class="avatar" src="./assets/icon/avatar-default.png" alt="">
+                        <img class="avatar" src="../assets/icon/avatar-default.png" alt="">
                         <h3 class="label-field__input account-name">Nguyễn Văn Mạnh</h3>
                         <i class="fas fa-ellipsis-h account__option"></i>
                     </div>
@@ -100,7 +100,7 @@
                             <h3 class="button__text-add">Xóa Nhân Viên</h3>
                         </button> -->
                         <button class="content__action-button-btn add">
-                            <img class="button__icon-left" src="./assets/icon/add.png" alt="">
+                            <img class="button__icon-left" src="../assets/icon/add.png" alt="">
                             <h3 class="button__text-add">Thêm Nhân Viên</h3>
                         </button>
                         <!-- <div class="button__down">
@@ -113,7 +113,7 @@
                 <div class="content__search">
                     <div class="content__field">
                         <div class="field">
-                            <img src="./assets/icon/search.png" alt="" class="field__icon">
+                            <img src="../assets/icon/search.png" alt="" class="field__icon">
                             <input type="text" class="field__search " name="search" placeholder="Tìm kiếm theo Mã, Tên, Số điện thoại" >   
                         </div>
                         <div class="dropdown dropdown__room"> 
@@ -124,37 +124,28 @@
                         </div>
                     </div>
                     <div class="content__search-refresh">
-                        <a href=""><img src="./assets/icon/refresh.png" alt=""></a>
+                        <a href=""><img src="../assets/icon/refresh.png" alt=""></a>
                     </div>
                 </div>
+               
                 <div class="content-table">
                 </div>
                 <div class="content__pagination">
                     <div class="show-number__person">Hiển thị <span>1-20/1000</span> nhân viên</div>
                     <ul class="content__pagination-button">
                         <li class="content__pagination-icon">
-                            <a href=""><img src="./assets/icon/btn-firstpage.svg" alt=""></a>
+                            <a href=""><img src="../assets/icon/btn-firstpage.svg" alt=""></a>
                         </li>
                         <li class="content__pagination-icon">
-                            <a href=""><img src="./assets/icon/btn-prev-page.svg" alt=""></a>
+                            <a href=""><img src="../assets/icon/btn-prev-page.svg" alt=""></a>
                         </li>
-                        <li class="content__pagination-numbers content__pagination-numbers-focus">
-                            <a href="" class="content__pagination-numbers-item">1</a>
-                        </li>
-                        <li class="content__pagination-numbers">
-                            <a href="" class="content__pagination-numbers-item">2</a>
-                        </li>
-                        <li class="content__pagination-numbers">
-                            <a href="" class="content__pagination-numbers-item">3</a>
-                        </li>
-                        <li class="content__pagination-numbers">
-                            <a href="" class="content__pagination-numbers-item">4</a>
+                        <ul class="list-pagination">
+                        </ul>
+                        <li class="content__pagination-icon">
+                            <a href=""><img src="../assets/icon/btn-next-page.svg" alt=""></a>
                         </li>
                         <li class="content__pagination-icon">
-                            <a href=""><img src="./assets/icon/btn-next-page.svg" alt=""></a>
-                        </li>
-                        <li class="content__pagination-icon">
-                            <a href=""><img src="./assets/icon/btn-lastpage.svg" alt=""></a>
+                            <a href=""><img src="../assets/icon/btn-lastpage.svg" alt=""></a>
                         </li>
                     </ul>
                     <div class="content__pagination-numbershowed">
@@ -171,11 +162,11 @@
                     <form class="form-staff">
                         <div class="staff-information__header">
                             <span class="heading staff-information__header-heading">THÔNG TIN NHÂN VIÊN</span>
-                            <img src="./assets/icon/x.svg" alt="" class="staff-information__header-img">
+                            <img src="../assets/icon/x.svg" alt="" class="staff-information__header-img">
                         </div>
                         <div class="row">
                             <div class="staff-information__img-person col-lg-3">
-                                    <img src="./assets/img/default-avatar.jpg" alt="">
+                                    <img src="../assets/img/default-avatar.jpg" alt="">
                                     <span>(Vui lòng chọn ảnh có định 
                                         dạng .jbg.,jebg,.png,.git )
                                     </span>
@@ -347,7 +338,7 @@
         <!-- form Warning -->
         <div class="form-warning" style="display: none;">
             <div class="form-warning__delete" >
-                <img src="./assets/icon/x.svg" alt="" class="form-warning__delete-exit">
+                <img src="../assets/icon/x.svg" alt="" class="form-warning__delete-exit">
                 <h3 class="title2 form-warning__delete-header">Xóa  nhân viên</h3>
                 <div class="form-warning__delete-content">
                     <div class="form-warning__delete-icon">
@@ -375,8 +366,8 @@
 </body>
 <script src=" https://code.jquery.com/jquery-3.6.0.min.js"></script> 
 
-<script src="./js/Vadilator.js"></script>
-<script src="./js/Format.js"></script>
-<script src="./js/BaseData.js"></script>
-<script src="./js/EmployeesOOp.js"></script>
+<script src="../js/Vadilator.js"></script>
+<script src="../js/Format.js"></script>
+<script src="../js/BaseData.js"></script>
+<script src="../js/Employees.js"></script>
 </html>

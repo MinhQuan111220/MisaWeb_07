@@ -94,4 +94,15 @@ class Format{
         }
         return stringNumber + number
     }
+
+
+    static pages (lengths,listpage){
+        var page
+        if(lengths/listpage===0){
+            page=lengths/listpage
+        }else{
+            page=Math.floor(lengths/listpage)+1
+        }
+        return page
+    }
 }

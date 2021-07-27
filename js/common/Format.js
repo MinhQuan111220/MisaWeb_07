@@ -9,6 +9,8 @@ class Format{
        
     }
 
+
+    // Hàm hiển thị tiền
      static salaryFormat(salary) {
         var result = '';
         if (salary != null) {
@@ -104,5 +106,23 @@ class Format{
             page=Math.floor(lengths/listpage)+1
         }
         return page
+    }
+
+    static showTableByDropDown(valueDropDown1,valueDropDown2,string1,string2){
+                if(valueDropDown1 === string1.toLowerCase() && valueDropDown2 === string2.toLowerCase()){
+                    valueDropDown1 = ''
+                    valueDropDown2 = ''
+                }
+                else if(valueDropDown2 === string2.toLowerCase()){
+                    valueDropDown2 = ''
+                } else if(valueDropDown1 === string1.toLowerCase()){
+                    valueDropDown1 = ''
+                } 
+                
+                jQuery('.staffTable tr').filter(function() {
+                    jQuery(this).toggle(jQuery(this).text().toLowerCase().indexOf(valueDropDown2)>-1
+                    && jQuery(this).text().toLowerCase().indexOf(valueDropDown1)>-1);
+                 });
+               
     }
 }

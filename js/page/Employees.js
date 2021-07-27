@@ -13,11 +13,9 @@ class EmployeesBase extends BaseJS{
         super()
         // Tiêu đề trang
         this.PageTitle = pageTitle
-
-        // load dữ liệu
-
-        this.loadData()
-
+        BaseJS.loadData();
+        // load dữ liệu employees
+        this.loadDataEmployees();
         // Thêm dữ liệu
         this.add()
 
@@ -31,14 +29,15 @@ class EmployeesBase extends BaseJS{
         // Xử lý các sự kiện
         this.HendelEvent()
 
-        //  Xử lý phân trang  
     }
 
     /*
         Load dữ liệu
         Author : by MQ
     **/
-    loadData(){
+    
+
+    loadDataEmployees(){
         try {
             var _this = this
         // lấy mã nhân viên APi
@@ -132,40 +131,44 @@ class EmployeesBase extends BaseJS{
                 }
 
         })
+        BaseJS.loadData().then(function(){
+            // xử lý hiển thị css dữ liệu sau khi đã lấy
+            
+            $$('tbody tr').forEach((tr,index) =>{
+                if(index%2===0){
+                    tr.classList.add('even')
+                }
+            })
+            // hiển thị các td 
+            $$('tbody tr td').forEach((td,index) =>{
+                td.classList.add('content-table__column')
+            })
 
+            // hiển thì các td có chưa icon delete
+            $$('tbody tr td:first-child').forEach((td,index) =>{
+                td.classList.add('delete')
+                td.innerHTML = `<i class="far fa-trash-alt"></i>`
+            })
 
-        // lấy danh sách nhân viên
+            //   lấy những dự liệu cần thiết từ api Employeess
         jQuery.ajax({
             url : "http://cukcuk.manhnv.net/v1/Employees",
             method : "GET"
         }).done(function(res){
             var listEmployeesLength = res.length
-            var html =' '
             var arrayRoom = []
             var arrayLocation = []
             var arrayEmployeeCode = []
             var arrayEmployeeID = []
             var arrayEmployeeFullName = []
             var arrayIdentityNumber = []
+            
             jQuery.each(res,function(index,object){
-                html = html + ` 
-                <tr class="${(index%2)===0 ? "even" :''} staff-indexnformation__list-table ">
-                    <td class="content-table__column delete"><i class="far fa-trash-alt"></i></td>
-                    <td class="content-table__column">${Format.formatNull(object.EmployeeCode)}</td>
-                    <td class="content-table__column">${Format.formatNull(object.FullName)}</td>
-                    <td class="content-table__column">${Format.formatNull(object.GenderName)}</td>
-                    <td class="content-table__column">${Format.formatDate(object.DateOfBirth)}</td>
-                    <td class="content-table__column">${Format.formatNull(object.PhoneNumber)}</td>
-                    <td class="content-table__column">${Format.formatNull(object.Email)}</td>
-                    <td class="content-table__column">${Format.formatNull(object.PositionName)}</td>
-                    <td class="content-table__column">${Format.formatNull(object.DepartmentName)}</td>
-                    <td class="content-table__column money">${Format.formatMoney(object.Salary)}</td>
-                    <td class="content-table__column">${Format.formatNull(object.WorkStatus)}</td>
-                    
-                </tr>`
-                // Tim tat ca cac phong ban
                 
+                // Lấy tat ca cac phong ban
                 arrayRoom[index] = Format.formatNull(object.DepartmentName)
+
+                // Lấy tất cả các vị trí
                 arrayLocation[index] = Format.formatNull(object.PositionName)
 
                 // Lấy ra các mã nhân viên
@@ -181,29 +184,9 @@ class EmployeesBase extends BaseJS{
                 arrayEmployeeFullName[index] = object.FullName
                 
             })
-            var contenttable = `
-                <table >
-                    <tr>
-                        <th class="content-table__column">Xóa</th>
-                        <th class="content-table__column">Mã nhân viên</th>
-                        <th class="content-table__column">Họ và tên</th>
-                        <th class="content-table__column">Giới tính</th>
-                        <th class="content-table__column">Ngày sinh</th>
-                        <th class="content-table__column">Điện thoại</th>
-                        <th class="content-table__column">Email</th>
-                        <th class="content-table__column">Chức vụ</th>
-                        <th class="content-table__column">Phòng ban</th>
-                        <th class="content-table__column money">Mức lương cơ bản</th>
-                        <th class="content-table__column">Tình trạng công việc</th>
-                        
-                    </tr>
-                    <tbody class="staffTable"> 
-                    ${html}
-                    </tbody>
-                </table>`
-            $('.content-table').innerHTML = contenttable
 
-            var emPloyeesInPage = 20;
+            // Phân trang
+            var emPloyeesInPage = 150;
             var htmlPages = ''
             for(var i=0;i<Format.pages(listEmployeesLength,emPloyeesInPage);i++){
                 htmlPages += `
@@ -233,6 +216,8 @@ class EmployeesBase extends BaseJS{
                     }
                 }
             )
+
+            
             _this.HendelEvent(arrayRoom,arrayLocation)
             _this.add(arrayEmployeeCode,EmployeeCode,DepartmentName,PositionName,arrayIdentityNumber)
             _this.update(arrayEmployeeID)
@@ -250,6 +235,8 @@ class EmployeesBase extends BaseJS{
                 }
     
         })
+        })
+        
         } catch (error) {
             console.log(error)
         }
@@ -340,6 +327,7 @@ class EmployeesBase extends BaseJS{
             ],
             
             onSubmit :  function(){
+                jQuery('tbody').empty()
                     var  object = {
                         EmployeeCode: jQuery('#EmployeeCode').val(),
                         FullName: jQuery('#FullName').val(),
@@ -365,7 +353,7 @@ class EmployeesBase extends BaseJS{
                         dataType: "json",
                         contentType: "application/json"
                     }).done(function(){
-                        _this.loadData()
+                        BaseJS.loadData()
                         $('.staff-information').classList.add('active')
                     }).fail(function(){
                         
@@ -466,8 +454,8 @@ class EmployeesBase extends BaseJS{
                            Vadilator.isRequired('#PhoneNumber'),
                            Vadilator.isEmail("#Email"),
                            ],
-                           
                            onSubmit :  function(){
+                                jQuery('tbody').empty()
                                    var  object = {
                                        EmployeeCode: jQuery('#EmployeeCode').val(),
                                        FullName: jQuery('#FullName').val(),
@@ -493,7 +481,7 @@ class EmployeesBase extends BaseJS{
                                        dataType: "json",
                                        contentType: "application/json"
                                    }).done(function(){
-                                       _this.loadData()
+                                       BaseJS.loadData()
                                        $('.staff-information').classList.add('active')
                                    }).fail(function(){
                                        
@@ -537,26 +525,28 @@ class EmployeesBase extends BaseJS{
                 // Hiển thị form cảnh bảo muốn xóa
                 $('.form-warning').style.display = ''
 
-                // Xóa thật 
+                // Xóa vĩnh viễn
                 $('#button-delete').onclick = function(e){
-                    jQuery.ajax({
-                        url : `http://cukcuk.manhnv.net/v1/Employees/{${arrayEmployeeID[index]}}`,
-                        method : "DELETE"
-                    }).done(function(res){
-                        $('.form-warning').style.display = 'none'
-                       _this.loadData()
-                    }).fail(function(res){
-                        switch (res.status) {
-                    case 500:
-                        console.log('Có lỗi từ server, vui lòng thử lại');
-                        break;
-                    case 400:
-                        console.log('Dữ liệu không hợp lệ');
-                        break;
-                    default:
-                        break;
-                }
+                    BaseJS.delete(`Employees/{${arrayEmployeeID[index]}}`,$('.form-warning'))
+                    jQuery('tbody').empty()
+                    BaseJS.loadData().then(function(){
+                        // xử lý hiển thị css dữ liệu sau khi đã lấy
+                        
+                        $$('tbody tr').forEach((tr,index) =>{
+                            if(index%2===0){
+                                tr.classList.add('even')
+                            }
+                        })
+                        // hiển thị các td 
+                        $$('tbody tr td').forEach((td,index) =>{
+                            td.classList.add('content-table__column')
+                        })
             
+                        // hiển thì các td có chưa icon delete
+                        $$('tbody tr td:first-child').forEach((td,index) =>{
+                            td.classList.add('delete')
+                            td.innerHTML = `<i class="far fa-trash-alt"></i>`
+                        })
                     })
                     e.preventDefault()
                 }
@@ -584,7 +574,7 @@ class EmployeesBase extends BaseJS{
 
     // Ham xu ly cac su kien
     HendelEvent(arrayRoom,arrayLocation){
-        // Xu ly du lieu dropdown phong ban
+        // Tạo danh sách các phòng ban 
         var listDropDownRoom = ' '
         for(var i=0; i<Format.listArray(arrayRoom).length;i++){
             listDropDownRoom = listDropDownRoom + `
@@ -613,8 +603,7 @@ class EmployeesBase extends BaseJS{
         $('.dropdown.dropdown__room').innerHTML = dropDown__Room
     
     
-        // Xu lu dropdown vi tri
-        
+        // Tạo danh sách các vị trí
         var listDropDownLocation = ' '
         for(var i=0; i<Format.listArray(arrayLocation).length;i++){
             
@@ -650,7 +639,7 @@ class EmployeesBase extends BaseJS{
         const dropDownList_ItemLocation =$$('.dropdown-list__item-location')
         const dropDownList_ItemBoy =$$('.dropdown-list__item-boy')
        
-        // show danh sách các phòng ban
+        // show table theo các phòng ban
         dropDownList_ItemRoom.forEach((item,index)=>{
             item.onclick=function(e){
                 $('.dropdown-list__item-room.dropdown-list__item-focus').classList.remove('dropdown-list__item-focus')
@@ -659,24 +648,11 @@ class EmployeesBase extends BaseJS{
                 
                 var valueRoom = $('.dropdown-room.dropdown-input').value.toLowerCase();
                 var valueLocation = $('.dropdown-location.dropdown-input').value.toLowerCase();
-                if(valueLocation === 'Tất cả các vị trí'.toLowerCase() && valueRoom === 'Tất cả phòng ban'.toLowerCase()){
-                    valueLocation = ''
-                    valueRoom = ''
-                }
-                else if(valueRoom === 'Tất cả phòng ban'.toLowerCase()){
-                    valueRoom = ''
-                } else if(valueLocation === 'Tất cả các vị trí'.toLowerCase()){
-                    valueLocation = ''
-                } 
-                
-                jQuery('.staffTable tr').filter(function() {
-                    jQuery(this).toggle(jQuery(this).text().toLowerCase().indexOf(valueRoom)>-1
-                    && jQuery(this).text().toLowerCase().indexOf(valueLocation)>-1);
-                 });
+                Format.showTableByDropDown(valueRoom,valueLocation,'Tất cả phòng ban','Tất cả các vị trí')
                 e.preventDefault()
             }
         })
-        // show danh sách các vị trí công việc
+        // show table theo các vị trí công việc
         dropDownList_ItemLocation.forEach((item,index)=>{
             item.onclick=function(e){
                 $('.dropdown-list__item-location.dropdown-list__item-focus').classList.remove('dropdown-list__item-focus')
@@ -686,24 +662,15 @@ class EmployeesBase extends BaseJS{
                 
                 var valueRoom = $('.dropdown-room.dropdown-input').value.toLowerCase();
                 var valueLocation = $('.dropdown-location.dropdown-input').value.toLowerCase();
-                if(valueLocation === 'Tất cả các vị trí'.toLowerCase() && valueRoom === 'Tất cả phòng ban'.toLowerCase()){
-                    valueLocation = ''
-                    valueRoom = ''
-                }
-                else if(valueRoom === 'Tất cả phòng ban'.toLowerCase()){
-                    valueRoom = ''
-                } else if(valueLocation === 'Tất cả các vị trí'.toLowerCase()){
-                    valueLocation = ''
-                } 
-                jQuery('.staffTable tr').filter(function() {
-                    jQuery(this).toggle(jQuery(this).text().toLowerCase().indexOf(valueRoom)>-1
-                    && jQuery(this).text().toLowerCase().indexOf(valueLocation)>-1);
-                });
+            
+                Format.showTableByDropDown(valueRoom,valueLocation,'Tất cả phòng ban','Tất cả các vị trí')
                 e.preventDefault()
             }
         })
         
-        // xử lý sự kiện của các dropdown
+        // xử lý sự kiện của các dropdown trong form
+
+        // dropdown giới tính
         dropDownList_ItemBoy.forEach((item,index)=>{
             item.onclick=function(e){
                 $('.dropdown-list__item-boy.dropdown-list__item-focus').classList.remove('dropdown-list__item-focus')
@@ -712,7 +679,8 @@ class EmployeesBase extends BaseJS{
                 e.preventDefault()
             }
         })
-    
+        
+        // dropdown phòng ban
         $$('.dropdown-list__item-staff__room').forEach((item,index)=>{
             item.onclick=function(e){
                 $('.dropdown-list__item-staff__room.dropdown-list__item-focus').classList.remove('dropdown-list__item-focus')
@@ -721,6 +689,8 @@ class EmployeesBase extends BaseJS{
                 e.preventDefault()
             }
         })
+
+        //dropdown vị trí
         $$('.dropdown-list__item-staff__location').forEach((item,index)=>{
             item.onclick=function(e){
                 $('.dropdown-list__item-staff__location.dropdown-list__item-focus').classList.remove('dropdown-list__item-focus')
@@ -729,6 +699,8 @@ class EmployeesBase extends BaseJS{
                 e.preventDefault()
             }
         })
+        
+        // dropdown trạng thái công việc
         $$('.dropdown-list__item-staff__job').forEach((item,index)=>{
             item.onclick=function(e){
                 $('.dropdown-list__item-staff__job.dropdown-list__item-focus').classList.remove('dropdown-list__item-focus')
@@ -739,7 +711,7 @@ class EmployeesBase extends BaseJS{
             }
         })
 
-        // khi click img exit
+        // khi click img exit trong form thêm nhân viên
         $('.staff-information__header-img').onclick= function(e){
             $('.staff-information').classList.add('active')
             
@@ -755,7 +727,7 @@ class EmployeesBase extends BaseJS{
         }
     
        
-        // xử \ hủy trong form thêm nhân viên
+        // xử lý hủy trong form thêm nhân viên
         $('.button-cancel').onclick = function(e){
             $('.staff-information').classList.add('active')
             
@@ -771,7 +743,7 @@ class EmployeesBase extends BaseJS{
         }
     
     
-        // tìm kiếm
+        // tìm kiếm trong table
         jQuery(document).ready(function() {
 
             // tim kiếm theo tên, mã nhân viên, sdt
@@ -790,7 +762,7 @@ class EmployeesBase extends BaseJS{
                 
             });
     
-            // Atuo tim kiem phong ban
+            // Atuo tìm kiếm phòng ban keyup
             
             jQuery('.dropdown-room.dropdown-input').on('keyup',function(e){
                 e.preventDefault()
@@ -811,13 +783,12 @@ class EmployeesBase extends BaseJS{
                 $('.dropdown.dropdown__room').classList.add('focus')
             })
           
-            // Xử lý Keydown Room
+            // Xử lý Keydown phòng ban
             
             var indexRoom= 0;
             var arrayKeydownRoom = []
             jQuery('.dropdown-room.dropdown-input').on("keydown",function(e){
                 var value = $('.dropdown-room.dropdown-input').value.toLowerCase();
-                var valueLocation = $('.dropdown-location.dropdown-input').value.toLowerCase();
                 arrayKeydownRoom = jQuery('.dropdown-list__room .dropdown-list__item-room').filter(function() {
                     return this.innerText.toLowerCase().indexOf(value) > -1
                 });
@@ -850,7 +821,7 @@ class EmployeesBase extends BaseJS{
                 
             })
            
-            // Auto tim kiem vi tri
+            // Auto tìm kiếm vị trí
             jQuery('.dropdown-location.dropdown-input.active').on('keyup',function(e){
                 e.preventDefault()
                 var value = jQuery(this).val().toLowerCase();
@@ -869,7 +840,7 @@ class EmployeesBase extends BaseJS{
                 $('.dropdown.dropdown__location').classList.add('focus')
             })
     
-            // Xử lý Keydown Location
+            // Xử lý Keydown vị trí
             
             var indexLocation= 0;
             var arrayKeydownLocation = []
@@ -911,7 +882,7 @@ class EmployeesBase extends BaseJS{
             // 
         });
 
-        // Onclick dropdown
+        // Xử lý xự kiện hiện icon khi click vào các dropdown
         let click = [];
         for(let i=0;i<dropdown.length;i++){
             click[i]=0
@@ -954,7 +925,6 @@ class EmployeesBase extends BaseJS{
         })
 
         // Khi cuộn table
-
         $('.content-table').onscroll = function(e){
             if($('.content-table').scrollTop >=40 ){
                 $('.delete-scroll').style.display = 'none'

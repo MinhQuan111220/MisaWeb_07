@@ -133,25 +133,46 @@
                 </div>
                
                 <div class="content-table">
+                    <table >
+                        <thead>
+                            <tr>
+                                <th prop-name="" class="content-table__column" format=""> Xóa</th>
+                                <th prop-name="EmployeeCode" class="content-table__column" format=""> Mã nhân viên</th>
+                                <th prop-name="FullName" class="content-table__column" format=""> Họ và tên</th>
+                                <th prop-name="GenderName" class="content-table__column" format=""> Giới tính</th>
+                                <th prop-name="DateOfBirth" class="content-table__column"format="date">Ngày sinh</th>
+                                <th prop-name="PhoneNumber" class="content-table__column" format=""> Điện thoại</th>
+                                <th prop-name="Email" class="content-table__column" format=""> Email</th>
+                                <th prop-name="PositionName" class="content-table__column" format=""> Chức vụ</th>
+                                <th prop-name="DepartmentName" class="content-table__column" format=""> Phòng ban</th>
+                                <th prop-name="Salary" class="content-table__column money" format="$">Mức lương cơ bản</th>
+                                <th prop-name="WorkStatus" class="content-table__column" format=""> Tình trạng công việc</th>
+                                
+                            </tr>
+                        </thead>
+                        <tbody class="staffTable"> 
+                       
+                        </tbody>
+                    </table>`
                 </div>
                 <div class="content__pagination">
                     <div class="show-number__person">Hiển thị <span>1-20/1000</span> nhân viên</div>
-                    <ul class="content__pagination-button">
-                        <li class="content__pagination-icon">
+                    <div class="content__pagination-button">
+                        <div class="content__pagination-icon">
                             <a href=""><img src="../assets/icon/btn-firstpage.svg" alt=""></a>
-                        </li>
-                        <li class="content__pagination-icon">
+                        </div>
+                        <div class="content__pagination-icon">
                             <a href=""><img src="../assets/icon/btn-prev-page.svg" alt=""></a>
-                        </li>
+                        </div>
                         <ul class="list-pagination">
                         </ul>
-                        <li class="content__pagination-icon">
+                        <div class="content__pagination-icon">
                             <a href=""><img src="../assets/icon/btn-next-page.svg" alt=""></a>
-                        </li>
-                        <li class="content__pagination-icon">
+                        </div>
+                        <div class="content__pagination-icon">
                             <a href=""><img src="../assets/icon/btn-lastpage.svg" alt=""></a>
-                        </li>
-                    </ul>
+                        </div>
+                    </div>
                     <div class="content__pagination-numbershowed">
                         <span>20</span> nhân viên/trang
                     </div>
